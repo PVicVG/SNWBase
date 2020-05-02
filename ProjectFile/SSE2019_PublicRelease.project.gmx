@@ -565,42 +565,54 @@
     <font>fonts\fnt_debug</font>
   </fonts>
   <objects name="objects">
-    <objects name="Init">
-      <object>objects\obj_init</object>
-    </objects>
-    <objects name="Gameplay">
-      <objects name="Controllers">
-        <object>objects\obj_level_controller</object>
-        <object>objects\obj_instance_region</object>
-        <object>objects\obj_indestructible</object>
-        <objects name="Global">
-          <object>objects\obj_audio</object>
-          <object>objects\obj_screen_controller</object>
-          <object>objects\obj_gamepad_controller</object>
-        </objects>
-      </objects>
-      <objects name="Playables">
-        <object>objects\par_player</object>
-        <object>objects\obj_camera</object>
-        <object>objects\obj_player</object>
-        <object>objects\obj_ai</object>
-        <objects name="Shields">
-          <object>objects\obj_player_fire_shield</object>
-          <object>objects\obj_player_bubble_shield</object>
-          <object>objects\obj_player_electricity_shield</object>
-        </objects>
-      </objects>
-      <objects name="NPCs">
-        <objects name="Collectible">
-          <object>objects\obj_ring</object>
-          <object>objects\obj_chaos_emerald</object>
-          <objects name="Don't use.">
-            <object>objects\obj_ring_magnetized</object>
+    <objects name="Stage Objects">
+      <objects name="Main Objects">
+        <object>objects\obj_ring</object>
+        <object>objects\obj_star_post</object>
+        <objects name="Badniks">
+          <object>objects\par_enemy</object>
+          <object>objects\obj_badnik_block</object>
+          <objects name="S1">
+            <object>objects\obj_badnik_motobug</object>
           </objects>
         </objects>
-        <objects name="Checkpoints">
-          <object>objects\obj_star_post</object>
+        <objects name="Monitors">
+          <objects name="Presets">
+            <object>objects\obj_monitor_ring</object>
+            <object>objects\obj_monitor_bubble</object>
+            <object>objects\obj_monitor_fire</object>
+            <object>objects\obj_monitor_electricity</object>
+            <object>objects\obj_monitor_life</object>
+            <object>objects\obj_monitor_invincibility</object>
+            <object>objects\obj_monitor_sneaker</object>
+            <object>objects\obj_monitor_eggman</object>
+          </objects>
+          <objects name="Don't use.">
+            <object>objects\obj_monitor_collision</object>
+            <object>objects\obj_monitor</object>
+            <object>objects\obj_monitor_destroyed</object>
+          </objects>
         </objects>
+        <objects name="Springs">
+          <object>objects\par_spring</object>
+          <object>objects\par_spring_diagonal</object>
+          <objects name="Horizontal">
+            <object>objects\obj_spring_left</object>
+            <object>objects\obj_spring_right</object>
+          </objects>
+          <objects name="Vertical">
+            <object>objects\obj_spring_up</object>
+            <object>objects\obj_spring_down</object>
+          </objects>
+          <objects name="Diagonal">
+            <object>objects\obj_spring_diagonal_up_right</object>
+            <object>objects\obj_spring_diagonal_up_left</object>
+            <object>objects\obj_spring_diagonal_down_right</object>
+            <object>objects\obj_spring_diagonal_down_left</object>
+          </objects>
+        </objects>
+      </objects>
+      <objects name="Side Objects">
         <objects name="Gimmicks">
           <objects name="Bridges">
             <object>objects\par_bridge</object>
@@ -653,24 +665,6 @@
             </objects>
           </objects>
         </objects>
-        <objects name="Springs">
-          <object>objects\par_spring</object>
-          <object>objects\par_spring_diagonal</object>
-          <objects name="Horizontal">
-            <object>objects\obj_spring_left</object>
-            <object>objects\obj_spring_right</object>
-          </objects>
-          <objects name="Vertical">
-            <object>objects\obj_spring_up</object>
-            <object>objects\obj_spring_down</object>
-          </objects>
-          <objects name="Diagonal">
-            <object>objects\obj_spring_diagonal_up_right</object>
-            <object>objects\obj_spring_diagonal_up_left</object>
-            <object>objects\obj_spring_diagonal_down_right</object>
-            <object>objects\obj_spring_diagonal_down_left</object>
-          </objects>
-        </objects>
         <objects name="Harmful">
           <objects name="Spikes">
             <object>objects\par_spike</object>
@@ -682,30 +676,6 @@
             <objects name="Don't use">
               <object>objects\obj_spike_log_harm</object>
             </objects>
-          </objects>
-        </objects>
-        <objects name="Badniks">
-          <object>objects\par_enemy</object>
-          <object>objects\obj_badnik_block</object>
-          <objects name="S1">
-            <object>objects\obj_badnik_motobug</object>
-          </objects>
-        </objects>
-        <objects name="Monitors">
-          <object>objects\obj_monitor</object>
-          <object>objects\obj_monitor_destroyed</object>
-          <objects name="Presets">
-            <object>objects\obj_monitor_ring</object>
-            <object>objects\obj_monitor_bubble</object>
-            <object>objects\obj_monitor_fire</object>
-            <object>objects\obj_monitor_electricity</object>
-            <object>objects\obj_monitor_life</object>
-            <object>objects\obj_monitor_invincibility</object>
-            <object>objects\obj_monitor_sneaker</object>
-            <object>objects\obj_monitor_eggman</object>
-          </objects>
-          <objects name="Don't use.">
-            <object>objects\obj_monitor_collision</object>
           </objects>
         </objects>
         <objects name="Water">
@@ -732,6 +702,35 @@
           <object>objects\obj_results</object>
           <object>objects\obj_sign_post</object>
           <object>objects\obj_sign_post_camera</object>
+        </objects>
+        <objects name="Misc">
+          <object>objects\obj_chaos_emerald</object>
+          <objects name="Don't use.">
+            <object>objects\obj_ring_magnetized</object>
+          </objects>
+        </objects>
+      </objects>
+    </objects>
+    <objects name="Gameplay">
+      <objects name="Controllers">
+        <object>objects\obj_level_controller</object>
+        <object>objects\obj_instance_region</object>
+        <object>objects\obj_indestructible</object>
+        <objects name="Global">
+          <object>objects\obj_audio</object>
+          <object>objects\obj_screen_controller</object>
+          <object>objects\obj_gamepad_controller</object>
+        </objects>
+      </objects>
+      <objects name="Playables">
+        <object>objects\par_player</object>
+        <object>objects\obj_camera</object>
+        <object>objects\obj_player</object>
+        <object>objects\obj_ai</object>
+        <objects name="Shields">
+          <object>objects\obj_player_fire_shield</object>
+          <object>objects\obj_player_bubble_shield</object>
+          <object>objects\obj_player_electricity_shield</object>
         </objects>
       </objects>
       <objects name="Display">
@@ -836,15 +835,18 @@
           </objects>
         </objects>
       </objects>
-    </objects>
-    <objects name="Menus / Continue">
-      <objects name="Continue">
-        <object>objects\obj_continue_controller</object>
-        <object>objects\obj_continue_post</object>
-        <object>objects\obj_continue_effect</object>
+      <objects name="Init">
+        <object>objects\obj_init</object>
       </objects>
-      <objects name="Options">
-        <object>objects\obj_options</object>
+      <objects name="Menus / Continue">
+        <objects name="Continue">
+          <object>objects\obj_continue_controller</object>
+          <object>objects\obj_continue_post</object>
+          <object>objects\obj_continue_effect</object>
+        </objects>
+        <objects name="Options">
+          <object>objects\obj_options</object>
+        </objects>
       </objects>
     </objects>
   </objects>
