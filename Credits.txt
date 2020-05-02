@@ -1,0 +1,12 @@
+/// Sonic Network World Base Framework - Credits ///
+
+Original Framework:
+- Aleks NB.
+
+Tweaks and additions:
+- PVic (@ebPedroVG)
+- JohnKun
+
+Character Sprites:
+- Sonic sprites by BlitzerHog
+- Tails sprites by Arifkunviid

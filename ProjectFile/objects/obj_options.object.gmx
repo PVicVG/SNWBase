@@ -432,11 +432,11 @@
              {
              
              if keyboard_check_pressed(vk_left) {
-                 global.played_id -= 1;
+                 global.player_id -= 1;
              }
 
              if keyboard_check_pressed(vk_right) {
-                 global.played_id += 1;
+                 global.player_id += 1;
              }             
                           
              }
