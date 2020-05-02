@@ -52,7 +52,7 @@
     global.screen_scale     = 1;   // The screen scale value.
     global.screen_width     = 480; // The screen width.
     global.screen_height    = 270; // The screen height.
-    global.angle_mode       = 0;   // How to rotate the player. (0 for classic, 1 for smooth)
+    global.angle_mode       = 1;   // How to rotate the player. (0 for classic, 1 for smooth)
         
  // Sounds:
     global.bgm_id         = 0;     // Used to store the zone bgm. Unused.

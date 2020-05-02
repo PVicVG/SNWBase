@@ -3,7 +3,7 @@
 
 // Default.
 var n;
-n = "(None)";
+n = "None ("+ string(argument0)+")";
 
 // Characters.
 if (argument0 == CHAR_SONIC) {
@@ -20,3 +20,4 @@ if (argument0 == CHAR_KNUCKLES) {
 
 // Return Value.
 return string(n);
+

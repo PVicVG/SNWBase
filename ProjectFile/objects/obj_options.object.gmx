@@ -431,13 +431,15 @@
              if(option_ended != 1)
              {
              
-             if keyboard_check_pressed(vk_left) {
-                 global.player_id -= 1;
-             }
-
-             if keyboard_check_pressed(vk_right) {
-                 global.player_id += 1;
-             }             
+                 if keyboard_check_pressed(vk_left) {
+                     global.player_id -= 1;
+                     aud_play_sound(general_switch, global.sfx_volume, 1, 0, 0);   
+                 }
+    
+                 if keyboard_check_pressed(vk_right) {
+                     global.player_id += 1;
+                     aud_play_sound(general_switch, global.sfx_volume, 1, 0, 0);   
+                 }             
                           
              }
           }
@@ -445,7 +447,7 @@
           {
              draw_set_color(c_white);
           } 
-          draw_text(global.screen_width/2, 128, "MAIN CHARACTER")   
+          draw_text(global.screen_width/2, 128, "&lt; MAIN CHARACTER &gt;")   
                            
           // ============= START GAME         
           if(option_selected == 6)
@@ -461,6 +463,8 @@
                    {
                         value = rm_playground;
                    }
+                   
+                   aud_play_sound(general_checkpoint, global.sfx_volume, 1, 0, 0);             
                    save_global_create();
                 }
              }
