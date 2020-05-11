@@ -239,34 +239,6 @@
        animation_linked_frame = 0;      
     }     
     
- // Grab move.
-    if(animation = "grab move")
-    {
-       sprite                 = spr_tails_grab_move;
-       animation_start        = 0;
-       animation_end          = 5;
-       animation_loop         = 0;
-       animation_speed        = 0.10;
-       animation_repeat       = 1; 
-       animation_repeat_times = 0;
-       animation_linked_to    = "";
-       animation_linked_frame = 0;      
-    }       
-    
- // Grab shimmy.
-    if(animation = "grab shimmy")
-    {
-       sprite                 = spr_tails_grab_shimmy;
-       animation_start        = 0;
-       animation_end          = 1;
-       animation_loop         = 0;
-       animation_speed        = 0.15;
-       animation_repeat       = 1; 
-       animation_repeat_times = 0;
-       animation_linked_to    = "";
-       animation_linked_frame = 0;      
-    }        
-    
  // Corkscrew.
     if(animation = "corkscrew")
     {
@@ -336,35 +308,7 @@
        animation_linked_to    = "";
        animation_linked_frame = 0;      
     }      
-          
- // Balance.
-    if(animation = "balance")
-    {
-       sprite                 = spr_tails_balance;
-       animation_start        = 0;
-       animation_end          = 3;
-       animation_loop         = 0;
-       animation_speed        = 0.15;
-       animation_repeat       = 1; 
-       animation_repeat_times = -1;
-       animation_linked_to    = "";
-       animation_linked_frame = 0;      
-    }
-    
- // Balance alt.
-    if(animation = "balance alt")
-    {
-       sprite                 = spr_tails_balance_alt;
-       animation_start        = 0;
-       animation_end          = 3;
-       animation_loop         = 0;
-       animation_speed        = 0.15;
-       animation_repeat       = 1; 
-       animation_repeat_times = -1;
-       animation_linked_to    = "";
-       animation_linked_frame = 0;      
-    }
-                   
+                            
  // Hurt.
     if(animation = "hurt")
     {

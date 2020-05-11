@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_collision_tile_15</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>10</depth>
   <persistent>0</persistent>
   <parentName>par_solid</parentName>

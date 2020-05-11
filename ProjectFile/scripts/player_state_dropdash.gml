@@ -1,11 +1,20 @@
 /// player_state_dropdash() 
  // Sonics dropdash ability.
  
+    // Cancel dropdash.
+        if(!input_action && !ground && dropdash_flag >= 1) or ((animation != "roll" && animation != "dropdash") && dropdash_flag == 1) 
+        {         
+            dropdash_flag  = 0;
+            dropdash_speed = 0;
+            dropdash_timer = 20;
+            audio_stop_sound(player_dropdash);
+        }
+ 
  // Trigger dropdash.
-    if((animation == "roll" || animation == "dropdash") && !ground && shield == 0)
+    if((animation == "roll" || animation == "dropdash") && !ground)
     {      
        // Trigger Dropdash.
-          if(input_action_pressed && shield_usable)
+          if(input_action_pressed && dropdash_flag == 0)
           {
              dropdash_flag = 1;
           }
@@ -22,18 +31,6 @@
              }
           }
        
-       // Cancel dropdash.
-          if(!input_action && !ground && dropdash_flag >= 1)
-          {
-             if(dropdash_flag == 2)
-             {
-                shield_usable  = false;
-             }          
-             dropdash_flag  = 0;
-             dropdash_speed = 0;
-             dropdash_timer = 20;
-             audio_stop_sound(player_dropdash);
-          }
     }
     
  // Set speed.
@@ -62,10 +59,17 @@
        {
           x_speed = -dropdash_speed;
        }
+       
+       // Camera Lag
+        obj_camera.cam_lag = 140;
+       
+       // Create Dropdash Effects
+        dummy_effect_create_ext(spr_dropdash_dust_big, 0.5, x, bbox_bottom, 5, 0, bm_normal, sign(x_speed), 1, c_white, 1);
+
     }
     
  // Cancel.
-    if((ground && dropdash_timer < 20) || shield != 0)
+    if((ground && dropdash_timer < 20))
     {
        dropdash_flag  = 0;
        dropdash_speed = 0;

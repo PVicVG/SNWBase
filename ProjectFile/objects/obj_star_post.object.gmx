@@ -129,13 +129,17 @@
 
     if(activated = false &amp;&amp; finished = false)
     {
-       if(global.checkpoint_x != x &amp;&amp; global.checkpoint_y != y)
+       if(global.checkpoint_x != x &amp;&amp; (global.checkpoint_y != y - 5))
        {
           activated = true;
           aud_play_sound(general_checkpoint, global.sfx_volume, 1, 0, 0);
           global.checkpoint_x = x;
           global.checkpoint_y = y-5;
-          global.checkpoint_t = global.game_time;           
+          global.checkpoint_t = global.game_time;  
+          // Bonus Stage:
+             if(global.player_rings &gt; 25){
+                instance_create(x, y-75, obj_bonus_spark_generator)
+             }         
        }
        else
        {

@@ -32,6 +32,7 @@
     magnetized  = 0;
     motion      = 0;
     timer       = 0;
+    destroy     = false;
     image_speed = 0;
 </string>
           </argument>
@@ -137,7 +138,7 @@
        {
           x_speed *= -0.25;
        }
-       if(!place_meeting(x, y+y_speed, par_solid))
+       if(!place_meeting(x, y+y_speed, par_terrain))
        {
           y += y_speed;
        }
@@ -151,7 +152,10 @@
           {
              timer -= 1
           }
-          else instance_destroy();       
+          else
+          {
+          event_user(0);
+          }       
     }   
 
  // Destroy rings outside the view.
@@ -217,6 +221,60 @@
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Destroy the ring the fancy way.
+if (destroy) {
+    if image_alpha &gt; 0 {
+        image_alpha -= 0.025;
+    } else {
+        instance_destroy();
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Trigger the ring destruction
+    if destroy == false {
+        destroy = true;
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="0">
       <action>
@@ -236,18 +294,8 @@
           <argument>
             <kind>1</kind>
             <string>/// Draw.
-
-    if(motion == true &amp;&amp; timer &lt; 90)
-    {
-       if((timer div 4) mod 2)
-       {
-           draw_sprite_ext(sprite_index, -1, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-       }
-    }
-    else
-    {
        draw_sprite_ext(sprite_index, -1, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-    }
+
 
 </string>
           </argument>

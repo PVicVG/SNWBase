@@ -168,6 +168,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Stage Specifics.
+
+// Bonus Stage
+mynumber = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Character specific.
 
  // Sonic:
@@ -355,48 +379,61 @@
        }    
     }
 
-    
+    // Default Animations
+       if(state == STATE_DEFAULT)
+       {              
+          // Change from idle to ground if in mid air
+              if (!ground &amp;&amp; animation = "idle")
+              {
+              animation = "walk";
+              }
+               
+         
+       }  
+        
  // Check states to apply animations:
     if(ground)
-    {
-       if(state == STATE_DEFAULT)
-       {
-          // Idle:
-             if(player_index == CHAR_SONIC)
-             {
-                if(x_speed == 0 &amp;&amp; animation_frame_count != 288 &amp;&amp; animation != "idle")
-                {
-                   animation = 'idle';
-                }else if(x_speed == 0 &amp;&amp; animation_frame_count &gt;= 288 &amp;&amp; animation != "idle bored"){
-                   animation = "idle bored";
-                }
-             }
-             if(player_index == CHAR_TAILS || player_index == CHAR_KNUCKLES)
-             {
-                if(x_speed == 0 &amp;&amp; animation_frame_count != 360 &amp;&amp; animation != "idle")
-                {
-                   if(animation != "idle bored")
-                   {
-                      animation = 'idle';
-                   }
-                }else if(x_speed == 0 &amp;&amp; animation_frame_count &gt;= 360 &amp;&amp; animation != "idle bored 2"){
-                   animation = "idle bored 2";
-                }
-             }             
-               
-          // Walking:
-             if(x_speed != 0 &amp;&amp; abs(x_speed) &lt; 5.50 &amp;&amp; animation != "walk")
-             {
-                animation = "walk";
-             }
-             
-          // Run:
-             if(abs(x_speed) &gt;= 5.50 &amp;&amp; animation != "run")
-             {
-                animation = "run";
-             }          
-       }  
-             
+    {   
+          // Default Animations
+              if (state == STATE_DEFAULT)
+              {         
+                    // Idle
+                     if(player_index == CHAR_SONIC)
+                     {
+                        if(x_speed == 0 &amp;&amp; animation_frame_count != 288 &amp;&amp; animation != "idle")
+                        {
+                           animation = 'idle';
+                        }else if(x_speed == 0 &amp;&amp; animation_frame_count &gt;= 288 &amp;&amp; animation != "idle bored"){
+                           animation = "idle bored";
+                        }
+                     }
+                     if(player_index == CHAR_TAILS || player_index == CHAR_KNUCKLES)
+                     {
+                        if(x_speed == 0 &amp;&amp; animation_frame_count != 360 &amp;&amp; animation != "idle")
+                        {
+                           if(animation != "idle bored")
+                           {
+                              animation = 'idle';
+                           }
+                        }else if(x_speed == 0 &amp;&amp; animation_frame_count &gt;= 360 &amp;&amp; animation != "idle bored 2"){
+                           animation = "idle bored 2";
+                        }
+                     }           
+                             
+                  // Walking:
+                     if(x_speed != 0 &amp;&amp; abs(x_speed) &lt; 5.50 &amp;&amp; animation != "walk")
+                     {
+                        animation = "walk";
+                     }
+                     
+                  // Run:
+                     if(abs(x_speed) &gt;= 5.50 &amp;&amp; animation != "run")
+                     {
+                        animation = "run";
+                     } 
+            
+            }
+        
        // Looking up:
           if(state == STATE_LOOKUP &amp;&amp; animation != "look up")
           {
@@ -592,28 +629,28 @@
  // Walking:
     if(player_index == CHAR_SONIC)
     {
-       if(animation = "walk" &amp;&amp; ground)
+       if(animation = "walk")
        {
           animation_speed = min(0.30, max(0.05+abs(x_speed)/25));
        }
     }
     if(player_index == CHAR_TAILS)
     {
-       if(animation = "walk" &amp;&amp; ground)
+       if(animation = "walk")
        {
           animation_speed = min(0.25, max(0.10+abs(x_speed)/25));
        }
     }    
     if(player_index == CHAR_KNUCKLES)
     {
-       if(animation = "walk" &amp;&amp; ground)
+       if(animation = "walk")
        {
           animation_speed = min(0.25, max(0.05+abs(x_speed)/25));
        }
     }
         
  // Running:
-    if(animation = "run" &amp;&amp; ground)
+    if(animation = "run")
     {
        animation_speed = 0.20+abs(x_speed)/25;
     }    
@@ -1904,7 +1941,7 @@
     player_state_shield();    
     
  // Sonic only - Dropdash:
-    if(player_index == CHAR_SONIC &amp;&amp; allow_dropdash == true)
+    if(player_index == CHAR_SONIC)
     {
        player_state_dropdash();
     }
@@ -1957,7 +1994,7 @@
     player_state_push();
     
  // Balancing:
-    player_state_edgewobble();
+  //  player_state_edgewobble();
 </string>
           </argument>
         </arguments>
@@ -2322,7 +2359,16 @@
                  shield_obj . handle = id;
                  aud_play_sound(shield_get_electricity, global.sfx_volume, 1, 0, 0);                     
               }
-           }          
+           }
+           if(shield == SHIELD_WIND)
+           {
+              if(shield_obj = noone)
+              {
+                 shield_obj = instance_create(x, y, obj_player_wind_shield);
+                 shield_obj . handle = id;
+                 aud_play_sound(shield_get_electricity, global.sfx_volume, 1, 0, 0);                     
+              }
+           }           
     }
     
     if(debug_mode)

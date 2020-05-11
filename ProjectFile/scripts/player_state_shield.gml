@@ -1,17 +1,23 @@
 /// player_state_shield()
  // This is used for shield abilities.
  
+  // Insta Shield
+    if (shield == 0)
+    {
+        player_state_insta_shield();
+    }
+ 
  // Exit if we don't have a shield.
     if(shield == noone)     exit;
     if(shield_obj == noone) exit;
     if(invincibility > 1)   exit;
-   
+      
  // Fire Dash:
-    if(shield == SHIELD_FIRE && player_index == CHAR_SONIC)
+    if(shield == SHIELD_FIRE)
     {
        if(shield_usable == true)
        {
-          if(input_action_pressed)
+          if(input_special_pressed)
           {
              x_speed            = animation_direction*8;
              y_speed            = 0;
@@ -62,11 +68,11 @@
     }
    
  // Bubble Bounce.
-    if(shield == SHIELD_BUBBLE && player_index == CHAR_SONIC)
+    if(shield == SHIELD_BUBBLE )
     {
        if(shield_usable == true)
        {
-          if(input_action_pressed)
+          if(input_special_pressed)
           {
              x_speed       = 0;
              y_speed       = 8;
@@ -89,7 +95,17 @@
           {
              y_speed = -(dsin(angle_relative) * g_speed) - (dcos(angle_relative) * 7.5/2);          
           }
+          
+          // Different Types of Bounces depending on Key held
+          if (input_special)
+          {
+          jump_completed         = true;   
+          }
+          else
+          {
           jump_completed         = false;   
+          }
+          
           jump_lock              = false;   
           shield_state           = 2;
           shield_usable          = true;
@@ -105,14 +121,15 @@
     }
     
  // Electricity Jump.
-    if(shield == SHIELD_ELECTRICITY && player_index == CHAR_SONIC)
+    if(shield == SHIELD_ELECTRICITY )
     {
        if(shield_usable == true)
        {
-          if(input_action_pressed)
+          if(input_special_pressed)
           {
              jump_completed = true;
              y_speed        = -5.5;
+             state = STATE_JUMP;
              shield_usable  = false;
              jump_lock      = false; 
              aud_play_sound(shield_use_electricity, global.sfx_volume, 1, 0, 0);
@@ -131,5 +148,58 @@
        }
     }
     
+  // Wind Shield:
+    if(shield == SHIELD_WIND)
+    {
+        // Execute Shield Action
+           if(shield_usable == true)
+           {
+              if(input_special_pressed)
+              {
+                 jump_completed = true;
+                 y_speed            = -6;
+                 state              = STATE_JUMP;
+                 shield_obj         . sprite_index = spr_shield_wind_dash;
+                 shield_state       = 1;
+                 shield_usable      = false;
+                 obj_camera.cam_lag = 50;
+                 aud_play_sound(shield_use_flame, global.sfx_volume, 1, 0, 0);
+              }
+           }
+       
+       // Low Gravity
+           if (shield_state == 1)
+           {
+               if (input_special)
+               {
+                    shield_obj.sprite_index = spr_shield_wind_dash;
+                
+                   if (y_speed > 2)
+                   {
+                     y_speed = 2;
+                   }
+                   
+                   if y_speed < -6
+                   {
+                     y_speed = -6;
+                   }
+               }
+               else
+               {
+                    shield_obj.sprite_index = spr_shield_wind_empty;
+               }
+           }
+                      
+       // Remove Shield
+           if(ground || state != STATE_JUMP)
+           {
+               if(shield_state == 1)
+                  {
+                      shield_obj   . sprite_index = spr_shield_wind;
+                      shield_state = 0;
+                  }
+           }
+   
+    }
 
     

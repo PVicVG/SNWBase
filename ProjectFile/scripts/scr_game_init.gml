@@ -5,9 +5,13 @@
     global.main_font       = font_add_sprite(font_main, ord("!"), true , 1);
     global.lives_font      = font_add_sprite(font_lives, ord("0"), false, 0);
     global.hud_font        = font_add_sprite(font_hud_numbers, ord("0"), false, 0);
+    global.big_numbers        = font_add_sprite(font_big_numbers, ord("0"), false, 0);
     global.title_card      = font_add_sprite(font_title_card, ord("A"), true , 0);   
     global.dataselect_font = font_add_sprite(spr_dataselect_font, ord("0"), false, 0); 
-    
+   
+ // Misc.
+    global.last_monitor_frame = 0; // Used for destroyed monitor graphics.  
+     
  // Keyboard input:
     global.key_up           = vk_up;
     global.key_down         = vk_down;

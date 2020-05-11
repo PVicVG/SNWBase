@@ -66,6 +66,10 @@
     broken . icon   = icon;
     broken . yy     = y-2;
     
+    if abs(obj_player.y_speed) &gt; 0
+    {
+    broken . y_speed = max((abs(obj_player.y_speed) * -1) div 2.35, -4.5);
+    }
  // Destroy collision.
     with(collision)
     {
@@ -73,7 +77,7 @@
     }
     
  // Dummy Effect:
-    dummy_effect_create(spr_explosion, 0.2, x, y, 5, 0);
+    dummy_effect_create(spr_explosion_monitor, 0.5, x, y, 5, 0);
     
  // Play Sound:
    aud_play_sound(general_break, global.sfx_volume, 1, 0, 0);
@@ -103,10 +107,16 @@
 
   if(bumped == true)
   {
+
      // Check for collision:
         repeat(abs(y_speed))
         {
-               if(!place_meeting(x, y+sign(y_speed), par_terrain))
+                // Check Collision
+                var col;
+                col = place_meeting(x, y + sign(y_speed), par_terrain);
+                
+                // Test Collision
+               if (!col)
                {
                   y += sign(y_speed);
                }
@@ -123,7 +133,6 @@
            y_speed = 12;
         }     
   }
-
 </string>
           </argument>
         </arguments>
@@ -209,7 +218,7 @@
             <string>/// Draw monitor.
 
  // Icon:
-    draw_sprite(spr_monitor_icon, icon, floor(x), floor(y-5));
+    draw_sprite(spr_monitor_icon, icon, floor(x), floor(y-2));
  // Main monitor:
     draw_sprite(sprite_index, -1, floor(x), floor(y));
 

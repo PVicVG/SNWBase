@@ -58,8 +58,14 @@
  // Check if we collide with the bottom: 
     var monitor;
     monitor = instance_nearest(x, y, obj_monitor);
-    if(monitor != noone && (y_speed <= 0 && (state == STATE_JUMP || state == STATE_ROLL || animation = "roll")) && (player_collision_check(COL_TOP_OBJECT, MASK_BIG, x, y, angle, monitor)))
+    if(monitor != noone && (y_speed <= 0 && (state == STATE_DEFAULT || state == STATE_JUMP || state == STATE_ROLL || animation = "roll")) && (player_collision_check(COL_TOP_OBJECT, MASK_BIG, x, y, angle, monitor)))
     {  
+    // Monitor's collision is now ded.
+        with monitor
+        {
+            collision.x = -1;
+            collision.y = -1; 
+        }
        monitor.bumped  = true;
        monitor.y_speed = -2;
        angle           = 0;

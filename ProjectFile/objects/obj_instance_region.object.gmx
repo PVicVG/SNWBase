@@ -39,7 +39,8 @@
  // Deactivate instances that need to be activated in the middle region:
     instance_deactivate_object(obj_ring);
     instance_deactivate_object(par_enemy);
-    
+    instance_deactivate_object(obj_physics_parent);
+        
  // Middle region: This is for other objects that we want to spawn next. We have to do this twice.
  // Once using view_xview/view_yview and another one using player coordinates. We do this to make sure that when the player outruns the camera that instances are active inside the camera view and near the player.
     var player;

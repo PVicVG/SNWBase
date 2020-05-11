@@ -39,7 +39,7 @@
     }
     
  // Trigger fly:
-    if(!ground && (animation == "roll") && input_action_pressed && shield_usable == true)
+    if(!ground && (animation == "roll") && input_action_pressed )
     {
        state              = STATE_FLY;
        angle              = 0;

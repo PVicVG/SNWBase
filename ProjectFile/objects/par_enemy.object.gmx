@@ -31,8 +31,21 @@
     global.player_score += score_multiplier(true, x, y-10); 
                                 
  // Dummy Effect:
-    dummy_effect_create(spr_explosion, 0.2, x, y, 5, 0);
-    
+    dummy_effect_create(spr_explosion, 0.5, x, y, 5, 0);
+
+ // Generate Scrap Metal Pieces.
+    scrapmetal_id = instance_create(x - 8, y, obj_scrap_metal);
+    scrapmetal_id.direction = 115;
+    scrapmetal_id.speed = 3;
+
+    scrapmetal_id=instance_create(x, y, obj_scrap_metal);
+    scrapmetal_id.direction = 90;
+    scrapmetal_id.speed = 5;
+
+    scrapmetal_id = instance_create(x + 8, y, obj_scrap_metal);
+    scrapmetal_id.direction = 75;
+    scrapmetal_id.speed = 3;   
+        
  // Play Sound:
     aud_play_sound(general_break, global.sfx_volume, 1, 0, 0);
 </string>

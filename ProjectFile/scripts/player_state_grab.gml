@@ -107,10 +107,24 @@
        // Jump:
           if(input_action_pressed)
           {
+            // Jump Flags.
              state          = STATE_JUMP;
-             grab_timer     = 6;
              jump_completed = false;
-             y_speed        = jump_strength;
+             
+             // Different Means of Leaving Hang
+             if !input_down {
+                // Jump from Hang
+                    grab_timer     = 0;
+                    y_speed        = jump_strength;
+             }
+             else
+             {
+                // Fall from Hang
+                     grab_timer     = 1;
+                     y_speed        = 0;
+             }            
+             
+             // Allow player to use shields and plays the sound
              shield_usable  = true;
              aud_play_sound(player_jump, global.sfx_volume, 1, 0, 0);             
           }

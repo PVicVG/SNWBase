@@ -2,7 +2,7 @@
  // Used for Grab/grab. objects.
  
  // Check if jumping:
-    if(grab_timer == 0 && (state == STATE_JUMP || state == STATE_SPRING || state == STATE_FLY || state == STATE_GLIDE))
+    if(grab_timer == 0 && (state == STATE_DEFAULT || state == STATE_JUMP || state == STATE_SPRING || state == STATE_FLY || state == STATE_GLIDE) && (y_speed > 0))
     {
        // Check if colliding with grab object.
           if(collision_rectangle(x-4, y-2, x+4, y+2, par_grab, false, true))

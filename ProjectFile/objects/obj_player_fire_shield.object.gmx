@@ -8,6 +8,30 @@
   <parentName>obj_indestructible</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Flags.
+flame_create_timer = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -37,28 +61,70 @@
  // Set depth:
     if(sprite_index != spr_shield_fire_dash)
     {
-       switch(image_index)
-       { 
-              case 0:
-              case 2:
-              case 4:
-              case 6:
-              case 8:
-              case 10:
-              case 12:
-              case 14:
-              case 16:{depth = 20; break;}
-              case 1:
-              case 3:
-              case 5:
-              case 9:
-              case 11:
-              case 13:
-              case 15:
-              case 17:{depth = -20; break;}
-       }
+        if image_index &gt; 0 &amp;&amp; image_index &lt; 9 {
+            depth = 20;
+        }
+        else
+        {
+            depth = -20;
+        }
     }
     else depth = -20;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Fire Shield Particles.
+
+if sprite_index == spr_shield_fire
+{
+    // Rotate flames
+        image_angle = angle_wrap(image_angle+2*(abs(cos(image_angle))+0.1));
+    
+    // Flame trail
+        if visible and ( flame_create_timer = -1 ) and obj_player.ground and abs(obj_player.x_speed) &gt; 4 and obj_player.animation != "skid" and obj_player.animation != "slide"
+        {   
+            // Create Flame on Player's position
+                with (obj_player) {
+                    // Create Flame
+                    var fl;
+                    fl = instance_create(x, y, obj_flame_small);
+                    
+                    // Set Flags.
+                    fl.image_xscale = animation_direction;
+                    fl.image_angle = angle;
+                }
+        
+          // Set Timer                
+            flame_create_timer = 5;      
+        }
+        
+        
+        
+    // Timer
+        if flame_create_timer &gt; -1 {
+            flame_create_timer -= 1;
+        }
+}
+
+
+
 </string>
           </argument>
         </arguments>
@@ -121,7 +187,15 @@
     else y = floor(handle.y-2);
 
  // Draw.
-    draw_sprite_ext(sprite_index, -1, floor(x), floor(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+    draw_set_blend_mode(bm_add)
+        if (sprite_index != spr_shield_fire_dash) {
+            draw_sprite_ext(sprite_index, -1, floor(x), floor(y), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+        } 
+        else 
+        {
+            draw_sprite_ext(sprite_index, -1, floor(x), floor(y), image_xscale, image_yscale, 0, image_blend, image_alpha);        
+        }
+    draw_set_blend_mode(bm_normal);
 </string>
           </argument>
         </arguments>

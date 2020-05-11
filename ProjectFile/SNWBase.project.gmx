@@ -11,6 +11,7 @@
       <sound>sound\music_levelselect</sound>
       <sound>sound\music_options</sound>
       <sound>sound\music_test</sound>
+      <sound>sound\music_bonusstage</sound>
     </sounds>
     <sounds name="SFX">
       <sounds name="General">
@@ -81,9 +82,6 @@
     </sounds>
   </sounds>
   <sprites name="sprites">
-    <sprites name="Engine Boot">
-      <sprite>sprites\spr_engine_boot</sprite>
-    </sprites>
     <sprites name="Gameplay">
       <sprites name="Playables">
         <sprites name="Sonic">
@@ -102,14 +100,11 @@
           <sprite>sprites\spr_sonic_spindash</sprite>
           <sprite>sprites\spr_sonic_breath</sprite>
           <sprite>sprites\spr_sonic_grab</sprite>
-          <sprite>sprites\spr_sonic_grab_move</sprite>
-          <sprite>sprites\spr_sonic_grab_shimmy</sprite>
           <sprite>sprites\spr_sonic_corkscrew</sprite>
-          <sprite>sprites\spr_sonic_balance</sprite>
-          <sprite>sprites\spr_sonic_balance_alt</sprite>
           <sprite>sprites\spr_sonic_hurt</sprite>
           <sprite>sprites\spr_sonic_die</sprite>
           <sprite>sprites\spr_sonic_drown</sprite>
+          <sprite>sprites\spr_dropdash_dust_big</sprite>
         </sprites>
         <sprites name="Tails">
           <sprite>sprites\spr_tails_idle</sprite>
@@ -125,10 +120,7 @@
           <sprite>sprites\spr_tails_spindash</sprite>
           <sprite>sprites\spr_tails_breath</sprite>
           <sprite>sprites\spr_tails_grab</sprite>
-          <sprite>sprites\spr_tails_grab_move</sprite>
-          <sprite>sprites\spr_tails_grab_shimmy</sprite>
           <sprite>sprites\spr_tails_corkscrew</sprite>
-          <sprite>sprites\spr_tails_balance</sprite>
           <sprite>sprites\spr_tails_fly</sprite>
           <sprite>sprites\spr_tails_fly_exhausted</sprite>
           <sprite>sprites\spr_tails_swim</sprite>
@@ -159,10 +151,7 @@
           <sprite>sprites\spr_knuckles_spindash</sprite>
           <sprite>sprites\spr_knuckles_breath</sprite>
           <sprite>sprites\spr_knuckles_grab</sprite>
-          <sprite>sprites\spr_knuckles_grab_move</sprite>
-          <sprite>sprites\spr_knuckles_grab_shimmy</sprite>
           <sprite>sprites\spr_knuckles_corkscrew</sprite>
-          <sprite>sprites\spr_knuckles_balance</sprite>
           <sprite>sprites\spr_knuckles_glide</sprite>
           <sprite>sprites\spr_knuckles_glide_drop</sprite>
           <sprite>sprites\spr_knuckles_slide</sprite>
@@ -178,6 +167,13 @@
           <sprite>sprites\spr_shield_bubble</sprite>
           <sprite>sprites\spr_shield_bubble_bounce</sprite>
           <sprite>sprites\spr_shield_electricity</sprite>
+          <sprite>sprites\spr_flame_small</sprite>
+          <sprite>sprites\spr_shield_bubble_orb</sprite>
+          <sprite>sprites\spr_shield_wind_base</sprite>
+          <sprite>sprites\spr_shield_wind</sprite>
+          <sprite>sprites\spr_shield_wind_dash</sprite>
+          <sprite>sprites\spr_shield_wind_empty</sprite>
+          <sprite>sprites\spr_insta_shield</sprite>
         </sprites>
         <sprites name="Sensors">
           <sprites name="Collision">
@@ -205,6 +201,7 @@
         <sprites name="Checkpoint">
           <sprite>sprites\spr_star_post</sprite>
           <sprite>sprites\spr_star_post_activated</sprite>
+          <sprite>sprites\spr_bonus_spark</sprite>
         </sprites>
         <sprites name="Monitors">
           <sprite>sprites\spr_monitor</sprite>
@@ -252,6 +249,16 @@
               <sprite>sprites\spr_badnik_motobug_mask</sprite>
             </sprites>
           </sprites>
+          <sprites name="Leapster">
+            <sprite>sprites\spr_mathbot_head</sprite>
+            <sprite>sprites\spr_mathbot_head_destroyed</sprite>
+            <sprite>sprites\spr_mathbot_body</sprite>
+            <sprite>sprites\spr_mathbot_arm_right</sprite>
+            <sprite>sprites\spr_mathbot_arm_right_destroyed</sprite>
+            <sprite>sprites\spr_mathbot_arm_left</sprite>
+            <sprite>sprites\spr_mathbot_base</sprite>
+            <sprite>sprites\spr_mathbot_assembled</sprite>
+          </sprites>
         </sprites>
         <sprites name="Bridges">
           <sprite>sprites\spr_test_bridge_log</sprite>
@@ -282,6 +289,11 @@
           <sprite>sprites\spr_results_ring</sprite>
           <sprite>sprites\spr_results_total</sprite>
         </sprites>
+        <sprites name="NPCs">
+          <sprite>sprites\spr_NPC_fur</sprite>
+          <sprite>sprites\spr_NPC_shoe</sprite>
+          <sprite>sprites\spr_NPC_base</sprite>
+        </sprites>
       </sprites>
       <sprites name="Display">
         <sprites name="HUD">
@@ -291,6 +303,8 @@
           <sprite>sprites\spr_hud_lives</sprite>
           <sprite>sprites\spr_continues</sprite>
           <sprite>sprites\spr_game_over</sprite>
+          <sprite>sprites\spr_editor_missions</sprite>
+          <sprite>sprites\spr_display_missions</sprite>
         </sprites>
         <sprites name="Title Card">
           <sprite>sprites\spr_title_card_banner</sprite>
@@ -299,6 +313,7 @@
         <sprites name="Font">
           <sprite>sprites\font_title_card</sprite>
           <sprite>sprites\font_hud_numbers</sprite>
+          <sprite>sprites\font_big_numbers</sprite>
           <sprite>sprites\font_main</sprite>
           <sprite>sprites\font_lives</sprite>
         </sprites>
@@ -328,17 +343,24 @@
           <sprite>sprites\spr_spindash_dust</sprite>
           <sprite>sprites\spr_electricity_spark</sprite>
           <sprite>sprites\spr_skid_dust</sprite>
+          <sprite>sprites\spr_dust_8</sprite>
         </sprites>
         <sprites name="Sparkles">
           <sprite>sprites\spr_ring_sparkle</sprite>
+          <sprite>sprites\spr_star_sparkles</sprite>
           <sprite>sprites\spr_invincibility_sparkle</sprite>
         </sprites>
         <sprites name="Explosions">
           <sprite>sprites\spr_explosion</sprite>
+          <sprite>sprites\spr_explosion_monitor</sprite>
+          <sprite>sprites\spr_explosion_boss</sprite>
+          <sprite>sprites\spr_boss_puff</sprite>
+          <sprite>sprites\spr_scrap_metal</sprite>
         </sprites>
         <sprites name="Score">
           <sprite>sprites\spr_score</sprite>
         </sprites>
+        <sprite>sprites\spr_dot</sprite>
       </sprites>
       <sprites name="Water">
         <sprite>sprites\spr_water_surface</sprite>
@@ -378,53 +400,57 @@
         <sprite>sprites\spr_test_chain_top</sprite>
       </sprites>
     </sprites>
-    <sprites name="Menus / Continue">
-      <sprites name="Title Screen">
-        <sprite>sprites\spr_title_screen_logo</sprite>
-      </sprites>
-      <sprites name="Data Select">
-        <sprites name="Slot and Cursor">
-          <sprite>sprites\spr_dataselect_slot</sprite>
-          <sprite>sprites\spr_dataselect_slot_no_save</sprite>
-          <sprite>sprites\spr_dataselect_slot_delete</sprite>
-          <sprite>sprites\spr_dataselect_cursor</sprite>
-          <sprite>sprites\spr_dataselect_cursor_small</sprite>
-        </sprites>
-        <sprites name="Slot data">
-          <sprite>sprites\spr_dataselect_characters</sprite>
-          <sprite>sprites\spr_dataselect_emeralds</sprite>
-          <sprite>sprites\spr_dataselect_emeralds_white</sprite>
-          <sprite>sprites\spr_dataselect_lives</sprite>
-        </sprites>
-        <sprites name="Robotnik">
-          <sprite>sprites\spr_dataselect_robotnik_delete</sprite>
-          <sprite>sprites\spr_dataselect_robotnik_spin</sprite>
-          <sprite>sprites\spr_dataselect_robotnik_full_spin</sprite>
-          <sprite>sprites\spr_dataselect_robotnik_selection</sprite>
-        </sprites>
-        <sprites name="Icons">
-          <sprite>sprites\spr_dataselect_icon</sprite>
-          <sprite>sprites\spr_dataselect_icon_static</sprite>
-        </sprites>
-        <sprites name="Misc.">
-          <sprite>sprites\spr_dataselect_arrow</sprite>
-          <sprite>sprites\spr_dataselect_background</sprite>
-          <sprite>sprites\spr_dataselect_font</sprite>
-        </sprites>
-      </sprites>
-      <sprites name="Level Select">
-        <sprite>sprites\spr_levelselect_stage_previews</sprite>
-        <sprite>sprites\spr_levelselect_arrows</sprite>
-      </sprites>
-      <sprites name="Continue">
-        <sprites name="Text">
-          <sprite>sprites\spr_continue_text</sprite>
-        </sprites>
-      </sprites>
-    </sprites>
     <sprites name="Misc">
       <sprite>sprites\spr_empty</sprite>
+      <sprite>sprites\spr_unidentified</sprite>
       <sprite>sprites\spr_camera</sprite>
+      <sprites name="Engine Boot">
+        <sprite>sprites\spr_engine_boot</sprite>
+      </sprites>
+      <sprites name="Menus / Continue">
+        <sprites name="Title Screen">
+          <sprite>sprites\spr_title_screen_logo</sprite>
+        </sprites>
+        <sprites name="Data Select">
+          <sprites name="Slot and Cursor">
+            <sprite>sprites\spr_dataselect_slot</sprite>
+            <sprite>sprites\spr_dataselect_slot_no_save</sprite>
+            <sprite>sprites\spr_dataselect_slot_delete</sprite>
+            <sprite>sprites\spr_dataselect_cursor</sprite>
+            <sprite>sprites\spr_dataselect_cursor_small</sprite>
+          </sprites>
+          <sprites name="Slot data">
+            <sprite>sprites\spr_dataselect_characters</sprite>
+            <sprite>sprites\spr_dataselect_emeralds</sprite>
+            <sprite>sprites\spr_dataselect_emeralds_white</sprite>
+            <sprite>sprites\spr_dataselect_lives</sprite>
+          </sprites>
+          <sprites name="Robotnik">
+            <sprite>sprites\spr_dataselect_robotnik_delete</sprite>
+            <sprite>sprites\spr_dataselect_robotnik_spin</sprite>
+            <sprite>sprites\spr_dataselect_robotnik_full_spin</sprite>
+            <sprite>sprites\spr_dataselect_robotnik_selection</sprite>
+          </sprites>
+          <sprites name="Icons">
+            <sprite>sprites\spr_dataselect_icon</sprite>
+            <sprite>sprites\spr_dataselect_icon_static</sprite>
+          </sprites>
+          <sprites name="Misc.">
+            <sprite>sprites\spr_dataselect_arrow</sprite>
+            <sprite>sprites\spr_dataselect_background</sprite>
+            <sprite>sprites\spr_dataselect_font</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="Level Select">
+          <sprite>sprites\spr_levelselect_stage_previews</sprite>
+          <sprite>sprites\spr_levelselect_arrows</sprite>
+        </sprites>
+        <sprites name="Continue">
+          <sprites name="Text">
+            <sprite>sprites\spr_continue_text</sprite>
+          </sprites>
+        </sprites>
+      </sprites>
       <sprites name="Debug">
         <sprite>sprites\spr_playground</sprite>
         <sprite>sprites\spr_performance_check</sprite>
@@ -438,9 +464,34 @@
         <background>background\bg_levelselect</background>
       </backgrounds>
     </backgrounds>
-    <backgrounds name="Stages">
+    <backgrounds name="Backgrounds">
       <backgrounds name="Test Area">
         <background>background\bg_test</background>
+      </backgrounds>
+      <backgrounds name="Palmtree Paradise">
+        <background>background\bg_PPZ_sea1</background>
+        <background>background\bg_PPZ_seaislands2</background>
+        <background>background\bg_PPZ_grass3</background>
+        <background>background\bg_PPZ_mountains4</background>
+        <background>background\bg_PPZ_backsea5</background>
+        <background>background\bg_PPZ_backmountains6</background>
+        <background>background\bg_PPZ_backsky7</background>
+        <background>background\bg_PPZ_backcity8</background>
+      </backgrounds>
+      <backgrounds name="Bonus">
+        <background>background\bg_bonus_grid</background>
+        <background>background\bg_bonus_walls</background>
+        <background>background\bg_bonus_bubbles</background>
+        <background>background\bg_bonus_birds</background>
+      </backgrounds>
+    </backgrounds>
+    <backgrounds name="Tilesets">
+      <backgrounds name="Palmtree Paradise">
+        <background>background\tileset_PPZ_main</background>
+        <background>background\tileset_PPZ_decorations</background>
+      </backgrounds>
+      <backgrounds name="Bonus Stage">
+        <background>background\tileset_bonus</background>
       </backgrounds>
     </backgrounds>
   </backgrounds>
@@ -465,6 +516,7 @@
       </scripts>
       <scripts name="States">
         <script>scripts\player_state_jump.gml</script>
+        <script>scripts\player_state_insta_shield.gml</script>
         <script>scripts\player_state_skid.gml</script>
         <script>scripts\player_state_lookup.gml</script>
         <script>scripts\player_state_crouch.gml</script>
@@ -540,9 +592,24 @@
       </scripts>
     </scripts>
     <scripts name="Utils">
+      <scripts name="Backgrounds">
+        <script>scripts\scr_parallax_add_node.gml</script>
+        <script>scripts\scr_draw_background_tiled_horizontal_part.gml</script>
+        <script>scripts\scr_draw_background_tiled_vertical_part.gml</script>
+        <script>scripts\scr_draw_background_tiled_part.gml</script>
+      </scripts>
+      <scripts name="Audio">
+        <script>scripts\aud_play_simple.gml</script>
+        <script>scripts\aud_play_sound.gml</script>
+        <script>scripts\aud_play_music.gml</script>
+        <script>scripts\zone_set_song.gml</script>
+      </scripts>
+      <script>scripts\draw_circular_bar.gml</script>
+      <script>scripts\chance.gml</script>
       <script>scripts\inview.gml</script>
       <script>scripts\string_place_number.gml</script>
       <script>scripts\dummy_effect_create.gml</script>
+      <script>scripts\dummy_effect_create_ext.gml</script>
       <script>scripts\wrap_angle.gml</script>
       <script>scripts\rotate_towards.gml</script>
       <script>scripts\score_multiplier.gml</script>
@@ -555,16 +622,65 @@
       <script>scripts\approach.gml</script>
       <script>scripts\s8e_get_update.gml</script>
       <script>scripts\gamepad_check.gml</script>
+      <script>scripts\angle_wrap.gml</script>
+      <script>scripts\room_goto_bonus.gml</script>
+      <script>scripts\scr_create_smoke.gml</script>
     </scripts>
-    <scripts name="Audio">
-      <script>scripts\aud_play_sound.gml</script>
-      <script>scripts\aud_play_music.gml</script>
-    </scripts>
+    <script>scripts\zone_songs.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_debug</font>
   </fonts>
   <objects name="objects">
+    <objects name="Terrain">
+      <objects name="Template Tiles">
+        <objects name="Solid">
+          <object>objects\obj_collision_tile_01</object>
+          <object>objects\obj_collision_tile_02</object>
+          <object>objects\obj_collision_tile_03</object>
+          <object>objects\obj_collision_tile_04</object>
+          <object>objects\obj_collision_tile_05</object>
+          <object>objects\obj_collision_tile_06</object>
+          <object>objects\obj_collision_tile_07</object>
+          <object>objects\obj_collision_tile_08</object>
+          <object>objects\obj_collision_tile_09</object>
+          <object>objects\obj_collision_tile_10</object>
+          <object>objects\obj_collision_tile_11</object>
+          <object>objects\obj_collision_tile_12</object>
+          <object>objects\obj_collision_tile_13</object>
+          <object>objects\obj_collision_tile_14</object>
+          <object>objects\obj_collision_tile_15</object>
+          <object>objects\obj_collision_tile_16</object>
+          <object>objects\obj_collision_tile_17</object>
+          <object>objects\obj_collision_tile_20</object>
+          <object>objects\obj_collision_tile_s_tunnel</object>
+        </objects>
+        <objects name="Platforms">
+          <object>objects\obj_collision_tile_21</object>
+        </objects>
+        <objects name="Layer0">
+          <object>objects\obj_collision_tile_19</object>
+        </objects>
+        <objects name="Layer1">
+          <object>objects\obj_collision_tile_18</object>
+        </objects>
+      </objects>
+      <objects name="Sensors">
+        <objects name="Loop Switching">
+          <object>objects\obj_loop_switch_0</object>
+          <object>objects\obj_loop_switch_1</object>
+        </objects>
+        <objects name="Layer Switching">
+          <object>objects\obj_layer_switch_0</object>
+          <object>objects\obj_layer_switch_1</object>
+        </objects>
+        <objects name="Tunnels">
+          <object>objects\obj_sensor_lock_tunnel_right</object>
+          <object>objects\obj_sensor_lock_tunnel_left</object>
+        </objects>
+        <object>objects\obj_layer_switch</object>
+      </objects>
+    </objects>
     <objects name="Stage Objects">
       <objects name="Main Objects">
         <object>objects\obj_ring</object>
@@ -586,6 +702,7 @@
             <object>objects\obj_monitor_invincibility</object>
             <object>objects\obj_monitor_sneaker</object>
             <object>objects\obj_monitor_eggman</object>
+            <object>objects\obj_monitor_wind</object>
           </objects>
           <objects name="Don't use.">
             <object>objects\obj_monitor_collision</object>
@@ -613,7 +730,7 @@
         </objects>
       </objects>
       <objects name="Side Objects">
-        <objects name="Gimmicks">
+        <objects name="Specific Gimmicks">
           <objects name="Bridges">
             <object>objects\par_bridge</object>
             <object>objects\obj_example_bridge_6</object>
@@ -632,8 +749,6 @@
           <objects name="Grabs/Hangs">
             <object>objects\par_grab</object>
             <object>objects\obj_grab_static</object>
-            <object>objects\obj_grab_pole</object>
-            <object>objects\obj_grab_distance</object>
           </objects>
           <objects name="Moving Platforms / Swing">
             <object>objects\obj_moving_platform_test</object>
@@ -684,20 +799,6 @@
           <object>objects\obj_water_air_bubble</object>
           <object>objects\obj_water_alarm</object>
         </objects>
-        <objects name="Obstacles">
-          <object>objects\par_obstacles</object>
-        </objects>
-        <objects name="Effects">
-          <object>objects\obj_dummy_effect</object>
-          <objects name="Player">
-            <object>objects\obj_electricity_spark</object>
-            <object>objects\obj_skid_dust</object>
-            <object>objects\obj_invincibility_sparkle</object>
-          </objects>
-          <objects name="Score">
-            <object>objects\obj_score</object>
-          </objects>
-        </objects>
         <objects name="Goal and Results">
           <object>objects\obj_results</object>
           <object>objects\obj_sign_post</object>
@@ -705,15 +806,24 @@
         </objects>
         <objects name="Misc">
           <object>objects\obj_chaos_emerald</object>
+          <objects name="Obstacles">
+            <object>objects\par_obstacles</object>
+          </objects>
           <objects name="Don't use.">
             <object>objects\obj_ring_magnetized</object>
+            <object>objects\par_fades</object>
+            <object>objects\obj_bonus_spark</object>
+            <object>objects\obj_fade_bonus</object>
+            <object>objects\obj_bonus_spark_generator</object>
           </objects>
         </objects>
       </objects>
+      <object>objects\obj_NPC_random</object>
     </objects>
     <objects name="Gameplay">
       <objects name="Controllers">
         <object>objects\obj_level_controller</object>
+        <object>objects\obj_mission_controller</object>
         <object>objects\obj_instance_region</object>
         <object>objects\obj_indestructible</object>
         <objects name="Global">
@@ -726,80 +836,23 @@
         <object>objects\par_player</object>
         <object>objects\obj_camera</object>
         <object>objects\obj_player</object>
-        <object>objects\obj_ai</object>
         <objects name="Shields">
           <object>objects\obj_player_fire_shield</object>
           <object>objects\obj_player_bubble_shield</object>
           <object>objects\obj_player_electricity_shield</object>
+          <object>objects\obj_player_wind_shield</object>
+          <objects name="Orbs and VFX">
+            <object>objects\obj_flame_small</object>
+            <object>objects\par_shield_orb</object>
+            <object>objects\obj_shield_bubble_orb</object>
+          </objects>
+          <object>objects\obj_insta_shield</object>
         </objects>
       </objects>
       <objects name="Display">
         <object>objects\obj_title_card</object>
         <object>objects\obj_pause</object>
         <object>objects\obj_game_over</object>
-      </objects>
-      <objects name="Terrain">
-        <objects name="Parents">
-          <object>objects\par_terrain</object>
-          <object>objects\par_solid</object>
-          <object>objects\par_solid_no_angle</object>
-          <object>objects\par_platform</object>
-          <object>objects\par_platform_no_angle</object>
-          <object>objects\par_layer0</object>
-          <object>objects\par_layer0_no_angle</object>
-          <object>objects\par_layer1</object>
-          <object>objects\par_layer1_no_angle</object>
-          <object>objects\par_moving_platform</object>
-          <object>objects\par_swing</object>
-        </objects>
-        <objects name="Template Tiles">
-          <objects name="Solid">
-            <object>objects\obj_collision_tile_01</object>
-            <object>objects\obj_collision_tile_02</object>
-            <object>objects\obj_collision_tile_03</object>
-            <object>objects\obj_collision_tile_04</object>
-            <object>objects\obj_collision_tile_05</object>
-            <object>objects\obj_collision_tile_06</object>
-            <object>objects\obj_collision_tile_07</object>
-            <object>objects\obj_collision_tile_08</object>
-            <object>objects\obj_collision_tile_09</object>
-            <object>objects\obj_collision_tile_10</object>
-            <object>objects\obj_collision_tile_11</object>
-            <object>objects\obj_collision_tile_12</object>
-            <object>objects\obj_collision_tile_13</object>
-            <object>objects\obj_collision_tile_14</object>
-            <object>objects\obj_collision_tile_15</object>
-            <object>objects\obj_collision_tile_16</object>
-            <object>objects\obj_collision_tile_17</object>
-            <object>objects\obj_collision_tile_20</object>
-            <object>objects\obj_collision_tile_s_tunnel</object>
-          </objects>
-          <objects name="Platforms">
-            <object>objects\obj_collision_tile_21</object>
-          </objects>
-          <objects name="Layer0">
-            <object>objects\obj_collision_tile_19</object>
-          </objects>
-          <objects name="Layer1">
-            <object>objects\obj_collision_tile_18</object>
-          </objects>
-        </objects>
-        <objects name="Sensors">
-          <objects name="Loop Switching">
-            <object>objects\obj_loop_switch_0</object>
-            <object>objects\obj_loop_switch_1</object>
-          </objects>
-          <objects name="Layer Switching">
-            <object>objects\obj_layer_switch_0</object>
-            <object>objects\obj_layer_switch_1</object>
-          </objects>
-          <objects name="Tunnels">
-            <object>objects\obj_sensor_lock_tunnel_right</object>
-            <object>objects\obj_sensor_lock_tunnel_left</object>
-          </objects>
-          <object>objects\obj_layer_switch</object>
-        </objects>
-        <object>objects\obj_debug_playground</object>
       </objects>
       <objects name="Fades">
         <object>objects\obj_fade_in</object>
@@ -834,6 +887,12 @@
             <object>objects\obj_dataselect_background</object>
           </objects>
         </objects>
+        <objects name="Mechanics">
+          <object>objects\obj_ai</object>
+          <object>objects\obj_grab_pole</object>
+          <object>objects\obj_grab_distance</object>
+        </objects>
+        <object>objects\obj_debug_playground</object>
       </objects>
       <objects name="Init">
         <object>objects\obj_init</object>
@@ -848,6 +907,49 @@
           <object>objects\obj_options</object>
         </objects>
       </objects>
+      <objects name="Effects">
+        <object>objects\obj_dummy_effect</object>
+        <objects name="Player">
+          <object>objects\obj_electricity_spark</object>
+          <object>objects\obj_skid_dust</object>
+          <object>objects\obj_invincibility_sparkle</object>
+        </objects>
+        <objects name="Score">
+          <object>objects\obj_score</object>
+        </objects>
+        <object>objects\obj_scrap_metal</object>
+        <object>objects\obj_smoke</object>
+      </objects>
+      <objects name="Parents">
+        <objects name="Terrain">
+          <object>objects\par_terrain</object>
+          <object>objects\par_solid</object>
+          <object>objects\par_solid_no_angle</object>
+          <object>objects\par_platform</object>
+          <object>objects\par_platform_no_angle</object>
+          <object>objects\par_layer0</object>
+          <object>objects\par_layer0_no_angle</object>
+          <object>objects\par_layer1</object>
+          <object>objects\par_layer1_no_angle</object>
+          <object>objects\par_moving_platform</object>
+          <object>objects\par_swing</object>
+        </objects>
+        <object>objects\obj_physics_parent</object>
+        <object>objects\obj_parallax_parent</object>
+      </objects>
+    </objects>
+    <objects name="Stages">
+      <objects name="Palmtree Paradise">
+        <object>objects\obj_PPZ_parallax</object>
+      </objects>
+      <objects name="Bonus Stage">
+        <object>objects\obj_bonus_controller</object>
+        <object>objects\obj_badnik_mathbot</object>
+        <object>objects\obj_mathbot_destroyer</object>
+        <object>objects\obj_bonus_parallax</object>
+        <object>objects\obj_bonus_number</object>
+        <object>objects\obj_bonus_numbersetter</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -855,26 +957,42 @@
     <room>rooms\rm_options</room>
     <rooms name="Stages">
       <room>rooms\rm_playground</room>
-      <room>rooms\rm_playground_2</room>
     </rooms>
-    <rooms name="Scraps">
-      <rooms name="Title &amp; Options">
-        <room>rooms\rm_title</room>
+    <rooms name="Misc">
+      <room>rooms\rm_bonus_stage</room>
+      <room>rooms\rm_template</room>
+      <rooms name="Scraps">
+        <rooms name="Title &amp; Options">
+          <room>rooms\rm_title</room>
+        </rooms>
+        <rooms name="Data / Level Select">
+          <room>rooms\rm_data_select</room>
+          <room>rooms\rm_level_select</room>
+        </rooms>
+        <rooms name="Continue">
+          <room>rooms\rm_continue</room>
+        </rooms>
+        <rooms name="Init">
+          <room>rooms\rm_init</room>
+        </rooms>
+        <rooms name="Test Areas">
+          <room>rooms\room9</room>
+          <room>rooms\rm_playground_2</room>
+        </rooms>
       </rooms>
-      <rooms name="Data / Level Select">
-        <room>rooms\rm_data_select</room>
-        <room>rooms\rm_level_select</room>
-      </rooms>
-      <rooms name="Continue">
-        <room>rooms\rm_continue</room>
-      </rooms>
-      <room>rooms\rm_init</room>
     </rooms>
+    <room>rooms\room13</room>
   </rooms>
-  <constants number="63">
+  <constants number="70">
     <constant name="GAME_NAME">"SSE"</constant>
     <constant name="GAME_VERSION">"V2.1f"</constant>
     <constant name="SFX">obj_audio</constant>
+    <constant name="MISSION_GOAL">1</constant>
+    <constant name="MISSION_RINGS">2</constant>
+    <constant name="MISSION_TIME">3</constant>
+    <constant name="MISSION_BADNIKS">4</constant>
+    <constant name="MISSION_FLICKIES">5</constant>
+    <constant name="MISSION_SCORE">6</constant>
     <constant name="COL_MAIN">1</constant>
     <constant name="COL_MAIN_OBJECT">2</constant>
     <constant name="COL_TOP">3</constant>
@@ -927,6 +1045,7 @@
     <constant name="SHIELD_FIRE">1</constant>
     <constant name="SHIELD_BUBBLE">2</constant>
     <constant name="SHIELD_ELECTRICITY">3</constant>
+    <constant name="SHIELD_WIND">4</constant>
     <constant name="CHAR_SONIC">1</constant>
     <constant name="CHAR_TAILS">2</constant>
     <constant name="CHAR_KNUCKLES">3</constant>

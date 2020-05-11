@@ -26,7 +26,13 @@
           <argument>
             <kind>1</kind>
             <string>/// Variables.
- 
+    
+    // Monitor Frame.
+    global.last_monitor_frame += 1;
+    image_index = global.last_monitor_frame;
+    image_speed = 0;
+    
+    // Monitor Flags.
     icon_position         = 0;
     icon_move_length      = 45;
     icon_disappear_length = 30;
@@ -239,6 +245,22 @@
             player_state_hurt(other, false);
        }
     }   
+    
+ // Wind Shield:
+    if(icon == 8)
+    {
+       if(parent.shield != 0)
+       { 
+          parent.shield = 0;
+          with(parent.shield_obj)
+          {
+               instance_destroy();
+          }
+          parent.shield_obj = noone;
+       }
+       parent.shield = SHIELD_WIND;
+      aud_play_sound(shield_get_electricity, global.sfx_volume, 1, 0, 0);
+    }
 
 </string>
           </argument>
@@ -269,7 +291,7 @@
     
  // Draw Icon:
     if(icon_disappear_length){
-       draw_sprite_ext(spr_monitor_icon, icon, x, yy+icon_position, 1, 1, 0, c_white, 1)
+       draw_sprite_ext(spr_monitor_icon, icon, x, yy+icon_position, 1, icon_disappear_length/30, 0, c_white, 1)
     }
 </string>
           </argument>

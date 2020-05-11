@@ -240,13 +240,36 @@
     draw_sprite(spr_title_card_banner, -1, floor(view_xview+tc_banner_position_x), floor(view_yview+tc_banner_position_y));
     
  // Zone Name:
+    draw_set_halign(fa_left);
     draw_set_font(global.title_card)
     draw_text(view_xview+tc_zone_position_x[0], view_yview+tc_zone_position_y, string(global.zone_name));
-    draw_text(view_xview+tc_zone_position_x[1], view_yview+tc_zone_position_y, string("#ZONE"));
     
- // Zone Act:
-    draw_sprite(spr_title_card_act, global.zone_act-1, view_xview+tc_act_position_x, view_yview+tc_act_position_y);
-
+    // Only draw the things below if not in a bonus stage.
+    if !instance_exists(obj_bonus_controller)
+        {
+         // 'Zone' Text
+            draw_text(view_xview+tc_zone_position_x[1], view_yview+tc_zone_position_y, string("#ZONE"));
+            
+         // Zone Act:
+            draw_sprite(spr_title_card_act, global.zone_act-1, view_xview+tc_act_position_x, view_yview+tc_act_position_y);
+        }
+    
+ // Missions
+    if instance_exists(obj_mission_controller)
+    {
+        draw_set_font(global.main_font)
+        draw_set_alpha(min(0.8, tc_backdrop_alpha))
+        draw_set_halign(fa_left);
+        draw_set_valign(fa_bottom);
+        
+        draw_text(view_xview[0] + tc_banner_position_y, view_yview[0] + 260, obj_mission_controller.mission_total)
+        
+        draw_set_valign(fa_top);
+        draw_set_alpha(1);
+    }
+    
+    // Reset the font to the title card font for measurements
+    draw_set_font(global.title_card)
 </string>
           </argument>
         </arguments>

@@ -2,8 +2,8 @@
 <object>
   <spriteName>spr_collision_tile_21</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
-  <depth>100</depth>
+  <visible>0</visible>
+  <depth>-20</depth>
   <persistent>0</persistent>
   <parentName>par_platform</parentName>
   <maskName>&lt;undefined&gt;</maskName>

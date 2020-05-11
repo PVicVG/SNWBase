@@ -57,6 +57,7 @@
     cam_y       = y;
     cam_x_shift = 0;
     cam_y_shift = 0;
+    cam_left_lock = false;
     cam_lag     = 0;
     cam_limit   = 0;
 
@@ -224,7 +225,9 @@
     }
   
  // Set position, floor the camera values to prevent jittering.
+    if (cam_left_lock == true &amp;&amp; cam_x &gt; x) or (cam_left_lock == false) {
     x = floor(cam_x + cam_x_shift);
+    }
     y = floor(cam_y + cam_y_shift);
 
 </string>
@@ -259,6 +262,44 @@
     if(cam_lag &lt; 0)
     {
        cam_lag = 0;
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Keep the Player inside view if Left Locked.
+    if (cam_left_lock) {
+        if instance_exists(obj_player)
+        {
+            with (obj_player)
+            {
+                // Checks if the player is behind the view and does thing.
+                if (x &lt; view_xview[0]) {
+                    // Remove XSpeed
+                        if (x_speed &lt; 0) {
+                            x_speed = 0;
+                        }
+                    // Warp him to view    
+                        x = view_xview[0] + 1;
+                }
+            }
+        }
     }
 </string>
           </argument>
