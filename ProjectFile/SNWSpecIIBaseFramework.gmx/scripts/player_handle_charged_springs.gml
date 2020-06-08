@@ -70,7 +70,7 @@ charged = player_collision_check(COL_BOTTOM_OBJECT, MASK_MAIN, x, y, angle, obj_
                 jump_lock = false;
                 state = STATE_SPRING;
                 x_speed = 0;
-                y_speed = -((14/20)*charger.image_index)
+                y_speed = -((14/20)*charged.image_index)
                 aud_play_simple(general_spring);
                 charged.sprite_index = spr_charged_spring_release;
                 tunnel_lock = false;
