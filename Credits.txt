@@ -1,12 +1,37 @@
 /// Sonic Network World Base Framework - Credits ///
 
+Sonic Network World Spec II Base Framework Director:
+- PVic (@ebPedroVG)
+
 Original Framework:
 - Aleks NB.
 
-Tweaks and additions:
-- PVic (@ebPedroVG)
+Team:
+- Zazon Filipe
 - JohnKun
+- MrLevRocks
+- BriceTas
+- Dashboy
+- Gabriel Casanova
+- Kast
+- Speed
+- TheBlurCafe
+- Wiztoad
+- SergioGM
+- Bennascar
+- DDProd
+- SonicFan1991
+- Fchar
+- Boost
+- IceXG
+- Trevguy
 
-Character Sprites:
-- Sonic sprites by BlitzerHog
+Assets:
+- Sonic sprites by Wiztoad, Dolphman and Kast.
 - Tails sprites by Arifkunviid
+- Fang sprites by RatherNoiceSprites and FabChaotix
+- Amy sprites by Troopsushi and Wiztoad.
+- Eggrobo sprites by Egg Master and Thincrust
+- Monitor Sprites by Techokami
+- Shadow sprites by AsuharaMoon
+- Trail from S&S Engine
