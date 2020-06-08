@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 240px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 0px 0 6px 10px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+h4 a {
+    display: block;
+    color: #000;
+    padding: 0px 0 6px 0px;
+    text-decoration: none;
+}
+
+h4 a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+h4 a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+
+h4 { padding: 0px 0 0px 4px; color: black; }
+
+</style>
+
+<meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
+	<title>TGMS Script Reference</title>
+	<style>
+		a:link 	  	{ text-decoration: none; }
+		a:visited 	{ text-decoration: none; }
+		a:hover 	{ text-decoration: underline; }
+		a:active 	{ text-decoration: underline; }
+		td 		{ padding: 3px; }
+		table 	{ width: 900px; padding: 0px; border-spacing: 0px; border-top: 0px solid #000000; border-bottom: 0px solid #000000; border-left: 0px solid #000000; border-right: 0px solid #000000; }
+		tip 	{ color: green; }
+		pre c {color: green;}
+
+		script_title { text-decoration: ; text-decoration: bold; color:#ff3366; font-size: 18pt; }
+		.script_info { border-top: 0px solid #000000; border-bottom: 0px solid #000000; border-left: 0px solid #000000; border-right: 0px solid #000000; padding: 0cm 0.1cm; }
+
+		.col_def_left  { width: 150px; background-color: #83caff; padding: 0px; cell-sp}
+		.col_def_right { width: 600px; background-color: #cccccc; padding: 0px;}
+	</style>
+</head>
+<body>
+
+<ul>
+
+<h4><a href="#FIRE_TWEENS">FIRE TWEENS</a></h4>
+
+  <li><a href="#TweenFire">TweenFire</a></li>
+  <li><a href="#TweenFireTo">TweenFireTo</a></li>
+  <li><a href="#TweenFireFrom">TweenFireFrom</a></li>
+  
+<h4><a href="#PREDEFINED_TWEENS">PREDEFINED TWEENS</a></h4>
+  <li><a href="#TweenCreate">TweenCreate</a></li>
+  <li><a href="#TweenPlay">TweenPlay</a></li>
+  <li><a href="#TweenPlayDelay">TweenPlayDelay</a></li>
+ 
+<h4><a href="#EASY_TWEENS">"EASY" TWEENS</a></h4>
+  <li><a href="#TweenEasyMove">TweenEasyMove</a></li>
+  <li><a href="#TweenEasyRotate">TweenEasyRotate</a></li>
+  <li><a href="#TweenEasyScale">TweenEasyScale</a></li>
+  <li><a href="#TweenEasyTurn">TweenEasyTurn</a></li>
+  <li><a href="#TweenEasyFade">TweenEasyFade</a></li>
+  <li><a href="#TweenEasyBlend">TweenEasyBlend</a></li>
+  <li><a href="#TweenEasyImage">TweenEasyImage</a></li>
+  <li><a href="#TweenEasySpeed">TweenEasySpeed</a></li>
+  <li><a href="#TweenEasySpeedHV">TweenEasySpeedHV</a></li>
+  <li><a href="#TweenEasyUseDelta">TweenEasyUseDelta</a></li>
+ 
+ <h4><a href="#TWEENS_SELECTION">TWEENS SELECTION</a></h4>
+  <li><a href="#Tweens">Tweens</a></li>
+  <li><a href="#TweensAll">TweensAll</a></li>
+  <li><a href="#TweensGroup">TweensGroup</a></li>
+  <li><a href="#TweensTarget">TweensTarget</a></li>
+  <li><a href="#TweensIncludeDeactivated">TweensIncludeDeactivated</a></li>
+
+<h4><a href="#STATE_CONTROL">STATE CONTROL</a></h4>
+	<li><a href="#TweenPause">TweenPause</a></li>
+	<li><a href="#TweenResume">TweenResume</a></li>
+	<li><a href="#TweenStop">TweenStop</a></li>
+	<li><a href="#TweenReverse">TweenReverse</a></li>
+	<li><a href="#TweenFinish">TweenFinish</a></li>
+	<li><a href="#TweenFinishDelay">TweenFinishDelay</a></li>
+  
+<h4><a href="#STATE_CHECKS">STATE CHECKS</a></h4>
+	<li><a href="#TweenExists">TweenExists</a></li>
+	<li><a href="#TweenIsActive">TweenIsActive</a></li>
+	<li><a href="#TweenIsPlaying">TweenIsPlaying</a></li>
+	<li><a href="#TweenIsPaused">TweenIsPaused</a></li>
+	<li><a href="#TweenIsStopped">TweenIsStopped</a></li>
+
+<h4><a href="#GET_SET">GET / SET</a></h4>
+ <li><a href="#TweenGet">TweenGet</a></li>
+ <li><a href="#TweenSet">TweenSet</a></li>
+	
+<h4><a href="#DESTRUCTION">DESTRUCTION</a></h4>
+	<li><a href="#TweenDestroy">TweenDestroy</a></li>
+	<li><a href="#TweenDestroySafe">TweenDestroySafe</a></li>
+	<li><a href="#TweenDestroyWhenDone">TweenDestroyWhenDone</a></li>
+ 
+<h4><a href="#SPECIAL_HANDLES">SPECIAL HANDLES</a></h4>
+  <li><a href="#TweenNull">TweenNull</a></li>
+  <li><a href="#TweenDefault">TweenDefault</a><li>
+	
+<h4><a href="#TOOLS">TOOLS</a></h4>
+  <li><a href="#Ease">Ease</a></li>
+  <li><a href="#TweenStep">TweenStep</a></li>
+  <li><a href="#TweenPath">TweenPath</a></li>
+  <li><a href="#TweenCalc">TweenCalc</a></li>
+  <li><a href="#TweenCalcTime">TweenCalcTime</a></li>
+  <li><a href="#TweenCalcAmount">TweenCalcAmount</a></li>
+
+<h4><a href="#ADVANCED_PROPERTIES">ADVANCED PROPERTIES</a></h4>
+  <li><a href="#TPNull">TPNull</a></li>
+  <li><a href="#TPExt">TPExt</a></li>
+  <li><a href="#TPUser">TPUser</a></li>
+  <li><a href="#TPArray">TPArray</a></li>
+  <li><a href="#TPList">TPList</a></li>
+  <li><a href="#TPMap">TPMap</a></li>
+  <li><a href="#TPGrid">TPGrid</a></li>
+
+<h4><a href="#EVENT_CALLBACKS">EVENT CALLBACKS</a></h4>
+  <li><a href="#TweenAddCallback">TweenAddCallback</a></li>
+  <li><a href="#TweenAddCallbackUser">TweenAddCallbackUser</a></li>
+  <li><a href="#TweenCallbackNull">TweenCallbackNull</a></li>
+  <li><a href="#TweenCallbackInvalidate">TweenCallbackInvalidate</a></li>
+  <li><a href="#TweenCallbackIsValid">TweenCallbackIsValid</a></li>
+  <li><a href="#TweenCallbackEnable">TweenCallbackEnable</a></li>
+  <li><a href="#TweenCallbackIsEnabled">TweenCallbackIsEnabled</a></li>
+
+<h4><a href="#EVENT_MANAGEMENT">EVENT MANAGEMENT</a></h4>
+  <li><a href="#TweenEventClear">TweenEventClear</a></li>
+  <li><a href="#TweenEventEnable">TweenEventEnable</a></li>
+  <li><a href="#TweenEventIsEnabled">TweenEventIsEnabled</a></li>
+
+<h4><a href="#SYSTEM_UTILITIES">SYSTEM UTILITIES</a></h4>
+  <li><a href="#TweenSystemGet">TweenSystemGet</a></li>
+  <li><a href="#TweenSystemSet">TweenSystemSet</a></li>
+  <li><a href="#TweenSystemCount">TweenSystemCount</a></li>
+  <li><a href="#TweenSystemClearRoom">TweenSystemClearRoom</a></li>
+  <li><a href="#TweenSystemFlushDestroyed">TweenSystemFlushDestroyed</a></li>
+  <li><a href="#SharedTweenerActivate">SharedTweenerActivate</a></li>
+  <li><a href="#SharedTweenerDestroy">SharedTweenerDestroy</a></li>
+  
+<h4><a href="#PROPERTY_BUILDERS">PROPERTY BUILDERS</a></h4>
+  <li><a href="#TGMS_BuildProperty">TGMS_BuildProperty</a></li>
+  <li><a href="#TGMS_BuildPropertyNormalize">TGMS_BuildPropertyNormalize</a></li>
+
+</br></br>
+
+
+</ul>
+
+<div style="margin-left:225px;width:640px;padding:1px 16px;height:1000px;">
+
+<h1>TweenGMS Pro v0.9.84<br/>Script Reference</h1>
+</br>
+  
+<a name="FIRE_TWEENS"></a><h2>=== FIRE TWEENS ===</h2>
+The TweenFire*() scripts are the default tweening scripts. Tweens created with TweenFire*() scripts are automatically destroyed when they are finished or if their target instance is destroyed. It is possible to ease up to 10 properties with a single tween.
+</br>A tween ID handle is returned from these scripts for manipulating a tween's state.
+</br></br>
+
+<hr>
+<a name="TweenFire"></a><table class="script_info"><tr><td>	
+<script_title>TweenFire</script_title>
+</br> 			Creates and plays a tween which eases a property(variable) between two values over a set duration of time.
+</br>			Tween is automatically destroyed when finished, stopped, or if its associated target instance is destroyed.
+</br>			Returns unique tween id.
+</br></br><b>TweenFire(target,ease,mode,delta,delay,dur,prop,start,dest,...)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> target 	</td><td> Instance to associate with tween and its property </td></tr>
+<tr><td> ease 		</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> mode 		</td><td> Play mode constant (0-4) (TWEEN_MODE_****) </td></tr>
+<tr><td> delta		</td><td> Whether to set timing in seconds(true) or steps (false) </td></tr>
+<tr><td> delay 		</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 		</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> prop 		</td><td> Property string (e.g. "x") </td></tr>
+<tr><td> start 		</td><td> Starting value of eased property </td></tr>
+<tr><td> dest		</td><td> Destination value of eased property </td></tr>
+<tr><td> ... 		</td><td> Additional properties (in order: prop,start,dest) </td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Tween x position to mouse_x over 30 steps</c>
+Tween(id, EaseOutQuad, TWEEN_MODE_ONCE, false, 0, 30, "x", x, mouse_x);
+
+<c>// Tween instance's scale back and forth from 0 to 1 over 2.0 seconds</c>
+Tween(id, EaseInOutQuad, TWEEN_MODE_PATROL, true, 0.0, 2.0, "image_xscale", 0, 1, "image_yscale", 0, 1);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenFireTo"></a><table class="script_info"><tr><td>	
+<script_title>TweenFireTo</script_title>
+</br> 			Creates and plays a tween which eases a property(variable) to a specified value over  a set duration of time.
+</br>			Tween is automatically destroyed when finished, stopped, or if its associated target instance is destroyed.
+</br>			Returns unique tween id.
+</br></br><b>TweenFireTo(target,ease,mode,delta,delay,dur,prop,to,...)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> target 	</td><td> Instance to associate with tween and its property </td></tr>
+<tr><td> ease 		</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> mode 		</td><td> Play mode constant (0-4) (TWEEN_MODE_****) </td></tr>
+<tr><td> delta		</td><td> Whether to set timing in seconds(true) or steps (false) </td></tr>
+<tr><td> delay 		</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 		</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> prop 		</td><td> Property setter script (e.g. x__) </td></tr>
+<tr><td> to			</td><td> Destination value of eased property </td></tr>
+<tr><td> ... 		</td><td> Additional properties (in order: prop,to) </td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Tween x position to mouse_x over 30 steps</c>
+TweenTo(id, EaseOutQuad, TWEEN_MODE_ONCE, false, 0, 30, "x", mouse_x);
+
+<c>// Double instances image scale over 1.0 second</c>
+TweenTo(id, EaseInOutQuad, TWEEN_MODE_PATROL, true, 0.0, 1.0, "image_scale", 2.0);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenFireFrom"></a><table class="script_info"><tr><td>	
+<script_title>TweenFireFrom</script_title>
+</br> 			Creates and plays a tween which eases a property(variable) from a specified value over a set duration of time.
+</br>			Tween is automatically destroyed when finished, stopped, or if its associated target instance is destroyed.
+</br>			Returns unique tween id.
+</br></br><b>TweenFireFrom(target,ease,mode,delta,delay,dur,prop,from,...)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> target 	</td><td> Instance to associate with tween and its property </td></tr>
+<tr><td> ease 		</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> mode 		</td><td> Play mode constant (0-4) (TWEEN_MODE_****) </td></tr>
+<tr><td> delta		</td><td> Whether to set timing in seconds(true) or steps (false) </td></tr>
+<tr><td> delay 		</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 		</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> prop 		</td><td> Property setter script (e.g. x__) </td></tr>
+<tr><td> from		</td><td> Starting value of eased property </td></tr>
+<tr><td> ... 		</td><td> Additional properties (in order: prop,from) </td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Tween x position from mouse_x over 30 steps</c>
+TweenFrom(id, EaseOutQuad, TWEEN_MODE_ONCE, false, 0, 30, "x", mouse_x);
+
+<c>// Tween image scale from 2 to default value over 1.0 second</c>
+TweenFrom(id, EaseInOutQuad, TWEEN_MODE_PATROL, true, 0.0, 1.0, "image_scale", 2.0);
+</pre></td></tr></table>
+
+<a name="PREDEFINED_TWEENS"></a><h2>=== PREDEFINED TWEENS ===</h2>
+TweenCreate() can be used to create predefined (or undefined) tweens which can be started later with TweenPlay(). Tweens created with this method will continue to exist until the target instance is destroyed or until TweenDestroy() is called. You can also use TweenDestroyWhenDone() to have the tween auto-destroy when finished.
+</br>It is possible to override a tween's predefined values with TweenPlay(). 
+</br>A tween ID handle is returned from these scripts for manipulating a tween's state.
+</br></br>
+
+<hr>
+<a name="TweenCreate"></a><table class="script_info"><tr><td>	
+<script_title>TweenCreate</script_title>
+</br> 			Creates and returns a tween id to be played at a later time with TweenPlay(). Eases a property(variable) between two values over a set duration of time. The tween will continue to exist and be valid until its associated target instance is destroyed, or until TweenDestroy() is called.
+</br></br><b>TweenCreate(target[,ease,mode,delta,delay,dur,prop,start,dest,...])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> target 	</td><td> Instance to associate with tween and its property </td></tr>
+<tr><td> ease 		</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> mode 		</td><td> Play mode constant (0-4) (TWEEN_MODE_****) </td></tr>
+<tr><td> delta		</td><td> Whether to set timing in seconds(true) or steps (false) </td></tr>
+<tr><td> delay 		</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 		</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> prop 		</td><td> Property string (e.g. "x") </td></tr>
+<tr><td> start 		</td><td> Starting value of eased property </td></tr>
+<tr><td> dest		</td><td> Destination value of eased property </td></tr>
+<tr><td> ... 		</td><td> Additional properties (in order: prop,start,dest) </td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Tween x position to mouse_x over 30 steps</c>
+tween = TweenCreate(id, EaseOutQuad, TWEEN_MODE_ONCE, false, 0, 30, "x", x, mouse_x);
+TweenPlay(tween);
+
+<c>// Create an undefined tween and override it with TweenPlay()</c>
+tweenY = TweenCreate(id);
+TweenPlay(tweenY, EaseLinear, TWEEN_MODE_ONCE, false, 0, 30, "y", y, mouse_y); 
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenPlay"></a><table class="script_info"><tr><td>	
+<script_title>TweenPlay</script_title>
+</br>Starts playing tween[s] previously created with TweenCreate(). Can optionally override a predefined tween.
+</br></br>This function supports the "Tween Selection" scripts for starting multiple tweens at once.
+</br></br><b>TweenPlay(tween[s][,ease,mode,delta,delay,dur,prop,start,dest,...])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tweenID 	</td><td> Previously created tween[s] id </td></tr>
+<tr><td> ease 		</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> mode 		</td><td> Play mode constant (0-4) (TWEEN_MODE_****) </td></tr>
+<tr><td> delta		</td><td> Whether to set timing in seconds(true) or steps (false) </td></tr>
+<tr><td> delay 		</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 		</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> prop 		</td><td> Property string (e.g. "x") </td></tr>
+<tr><td> start 		</td><td> Starting value of eased property </td></tr>
+<tr><td> dest		</td><td> Destination value of eased property </td></tr>
+<tr><td> ... 		</td><td> Additional properties (in order: prop,start,dest) </td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Tween x position to mouse_x over 30 steps</c>
+tweenX = TweenCreate(id, EaseOutQuad, TWEEN_MODE_ONCE, false, 0, 30, "x", x, mouse_x);
+TweenPlay(tweenX);
+
+<c>// Create an undefined tween and override it with TweenPlay()</c>
+tweenY = TweenCreate(id);
+TweenPlay(tweenY, EaseLinear, TWEEN_MODE_ONCE, false, 0, 30, "y", y, mouse_y);
+
+<c>// This would optionally start both tweens at the same time by using the "Tween Selection" scripts</br>// But note that all tweens should be previously defined.</c>
+TweenPlay(Tweens(tweenX, tweenY)); 
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenPlayDelay"></a><table class="script_info"><tr><td>	
+<script_title>TweenPlayDelay</script_title>
+</br>Starts playing defined tween[s] previously created with TweenCreate() after a set duration of time.
+</br></br>This function supports the "Tween Selection" scripts for starting multiple tweens at once.
+</br></br><b>TweenPlayDelay(tween[s],delay)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] 	</td><td> Previously created tween[s] id </td></tr>
+<tr><td> delay 		</td><td> Amount of time to delay start of tween[s] in seconds or steps </td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Tween x position to mouse_x over 30 steps after a 60 step delay</c>
+tweenX = TweenCreate(id, EaseOutQuad, TWEEN_MODE_ONCE, false, 0, 0, "x", x, mouse_x);
+TweenPlayDelay(tweenX, 60);
+</pre></td></tr></table>
+
+<hr>
+<a name="EASY_TWEENS"></a><h2>=== EASY TWEENS ===</h2>
+"Easy" Tweens are convenient for new users. They cover the most basic needs for easing instance values, such as position, rotation, and scaling. They are automatically destroyed when finished and automatically override any existing tweens using the same property/variable.
+</br>A tween ID handle is returned from these scripts for later manipulating a tween's state.
+</br>The default timing method(steps) for easy tweens can be switched to seconds by using TweenEasyUseDelta(true).
+</br></br>
+
+<hr>
+<a name="TweenEasyMove"></a><table class="script_info"><tr><td>	
+<script_title>TweenEasyMove</script_title>
+</br>Eases the position of an instance. Can optionally supply a [mode] argument. Default mode is TWEEN_MODE_ONCE.
+</br></br><b>TweenEasyMove(x1,y1,x2,y2,delay,duration,ease,[mode])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> x1 	</td><td> Starting x value </td></tr>
+<tr><td> y1 	</td><td> Starting y value </td></tr>
+<tr><td> x2 	</td><td> Destination x value </td></tr>
+<tr><td> y2 	</td><td> Destination y value </td></tr>
+<tr><td> delay 	</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 	</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> ease 	</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> [mode] </td><td> (Optional) Play mode constant (0-4) (TWEEN_MODE_****) default = TWEEN_MODE_ONCE</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Tween x position to mouse_x over 30 steps after a 60 step delay</c>
+TweenEasyMove(x, y, mouse_x, mouse_y, 60, 30, EaseInOutQuad);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenEasyRotate"></a><table class="script_info"><tr><td>	
+<script_title>TweenEasyRotate</script_title>
+</br>Eases the image angle of an instance. Can optionally supply a [mode] argument. Default mode is TWEEN_MODE_ONCE.
+</br></br><b>TweenEasyRotate(angle1,angle2,delay,duration,ease,[mode])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> angle1 </td><td> Starting image angle value </td></tr>
+<tr><td> angle2 </td><td> Destination image angle value </td></tr>
+<tr><td> delay 	</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 	</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> ease 	</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> [mode] </td><td> (Optional) Play mode constant (0-4) (TWEEN_MODE_****) default = TWEEN_MODE_ONCE</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Tween image angle from 0 to 360 over 30 steps</c>
+TweenEasyRotate(0, 360, 0, 30, EaseInOutQuad);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenEasyScale"></a><table class="script_info"><tr><td>	
+<script_title>TweenEasyScale</script_title>
+</br>Eases the image x/y scale of an instance. Can optionally supply a [mode] argument. Default mode is TWEEN_MODE_ONCE.
+</br></br><b>TweenEasyScale(xscale1,yscale1,xscale2,yscale2,delay,duration,ease,[mode])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> x1		</td><td> Starting xscale value </td></tr>
+<tr><td> y1 	</td><td> Starting yscale value </td></tr>
+<tr><td> x2 	</td><td> Destination xscale value </td></tr>
+<tr><td> y2 	</td><td> Destination yscale value </td></tr>
+<tr><td> delay 	</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 	</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> ease 	</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> [mode] </td><td> (Optional) Play mode constant (0-4) (TWEEN_MODE_****) default = TWEEN_MODE_ONCE</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Tween image x/y scale from 1.0 to 2.0 over 30 steps</c>
+TweenEasyRotate(1.0, 1.0, 2.0, 2.0, 0, 30, EaseInOutQuad);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenEasyTurn"></a><table class="script_info"><tr><td>	
+<script_title>TweenEasyTurn</script_title>
+</br>Eases the direction of an instance. Can optionally supply a [mode] argument. Default mode is TWEEN_MODE_ONCE.
+</br></br><b>TweenEasyTurn(dir1,dir2,delay,duration,ease,[mode])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> dir1 </td><td> Starting direction value </td></tr>
+<tr><td> dir2 </td><td> Destination direction value </td></tr>
+<tr><td> delay 	</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 	</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> ease 	</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> [mode] </td><td> (Optional) Play mode constant (0-4) (TWEEN_MODE_****) default = TWEEN_MODE_ONCE</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Tween instance's direction from 0 to 360 over 30 steps</c>
+TweenEasyTurn(0, 360, 0, 30, EaseInOutQuad);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenEasyFade"></a><table class="script_info"><tr><td>	
+<script_title>TweenEasyFade</script_title>
+</br>Eases the image alpha of an instance. Can optionally supply a [mode] argument. Default mode is TWEEN_MODE_ONCE.
+</br></br><b>TweenEasyFade(alpha1,alpha2,delay,duration,ease,[mode])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> alpha1 </td><td> Starting alpha value </td></tr>
+<tr><td> alpha2 </td><td> Destination alpha value </td></tr>
+<tr><td> delay 	</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 	</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> ease 	</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> [mode] </td><td> (Optional) Play mode constant (0-4) (TWEEN_MODE_****) default = TWEEN_MODE_ONCE</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Tween instance's image alpha from 0.0 to 1.0 over 30 steps</c>
+TweenEasyTurn(0.0, 1.0, 0, 30, EaseInOutQuad);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenEasyBlend"></a><table class="script_info"><tr><td>	
+<script_title>TweenEasyBlend</script_title>
+</br>Eases the image blend colour of an instance. Can optionally supply a [mode] argument. Default mode is TWEEN_MODE_ONCE.
+</br></br><b>TweenEasyBlend(col1,col2,delay,duration,ease,[mode])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> col1 </td><td> Starting image blend colour </td></tr>
+<tr><td> col2 </td><td> Destination image blend colour </td></tr>
+<tr><td> delay 	</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 	</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> ease 	</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> [mode] </td><td> (Optional) Play mode constant (0-4) (TWEEN_MODE_****) default = TWEEN_MODE_ONCE</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Tween instance's image blend colour from white to red over 30 steps</c>
+TweenEasyTurn(c_white, c_red, 0, 30, EaseInOutQuad);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenEasyImage"></a><table class="script_info"><tr><td>	
+<script_title>TweenEasyImage</script_title>
+</br>Eases the image index of an instance. Can optionally supply a [mode] argument. Default mode is TWEEN_MODE_ONCE.
+</br></br><b>TweenEasyImage(index1,index2,delay,duration,ease,[mode])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> index1 </td><td> Starting image index value </td></tr>
+<tr><td> index2 </td><td> Destination image index value </td></tr>
+<tr><td> delay 	</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 	</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> ease 	</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> [mode] </td><td> (Optional) Play mode constant (0-4) (TWEEN_MODE_****) default = TWEEN_MODE_ONCE</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Tween instance's image index from first to last frame over 30 steps</c>
+TweenEasyTurn(0, image_number-1, 0, 30, EaseInOutQuad);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenEasySpeed"></a><table class="script_info"><tr><td>	
+<script_title>TweenEasySpeed</script_title>
+</br>Eases the image index of an instance. Can optionally supply a [mode] argument. Default mode is TWEEN_MODE_ONCE.
+</br></br><b>TweenEasySpeed(speed1,speed2,delay,duration,ease,[mode])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> speed1 </td><td> Starting image index value </td></tr>
+<tr><td> speed2 </td><td> Destination image index value </td></tr>
+<tr><td> delay 	</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 	</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> ease 	</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> [mode] </td><td> (Optional) Play mode constant (0-4) (TWEEN_MODE_****) default = TWEEN_MODE_ONCE</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Tween instance's speed from 0 to 10 over 30 steps</c>
+TweenEasyTurn(0, 10, 0, 30, EaseInOutQuad);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenEasySpeedHV"></a><table class="script_info"><tr><td>	
+<script_title>TweenEasySpeedHV</script_title>
+</br>Eases the image index of an instance. Can optionally supply a [mode] argument. Default mode is TWEEN_MODE_ONCE.
+</br></br><b>TweenEasySpeedHV(hspeed1,vspeed1,hspeed2,vspeed2,delay,duration,ease,[mode])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> hspeed1 </td><td> Starting hspeed value </td></tr>
+<tr><td> vspeed1 </td><td> Starting vspeed value </td></tr>
+<tr><td> hspeed2 </td><td> Destination hspeed value </td></tr>
+<tr><td> vspeed2 </td><td> Destination vspeed value </td></tr>
+<tr><td> delay 	</td><td> Amount of time to delay start of tween in seconds or steps </td></tr>
+<tr><td> dur 	</td><td> Duration of time to ease property from start to destination </td></tr>
+<tr><td> ease 	</td><td> Ease algorithm script (e.g. EaseInOutQuad) </td></tr>
+<tr><td> [mode] </td><td> (Optional) Play mode constant (0-4) (TWEEN_MODE_****) default = TWEEN_MODE_ONCE</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Tween instance's hspeed/vspeed from 0 to 10 over 30 steps</c>
+TweenEasyTurn(0, 0, 10, 10, 0, 30, EaseInOutQuad);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenEasyUseDelta"></a><table class="script_info"><tr><td>	
+<script_title>TweenEasyUseDelta</script_title>
+</br>Toggles between step(false) and delta(true) timing for all "Easy Tweens".
+</br>The default timing is step timing (false).
+</br></br><b>TweenEasyUseDelta(use_seconds?)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> use_seconds? </td><td> Use seconds? </td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Tween instance's position over 30 steps</c>
+TweenEasyMove(x, y, mouse_x, mouse_y, 0, 30, EaseInOutQuad);
+
+<c>// Change default timing method to true (use seconds)</c>
+TweenEasyUseDelta(true);
+
+<c>// Tween instance's angle over 3.5 seconds</c>
+TweenEasyMoveRotate(0, 360, 0, 3.5, EaseInQuad);
+</pre></td></tr></table>
+
+<hr>
+<a name="TWEENS_SELECTION"></a><h2>=== TWEEN[S] SELECETION ===</h2>
+The <b>Tweens*()</b> selection scripts allow you to select multiple tweens for scripts supporting the "<b>tween[s]</b>" multi-tween parameter.
+</br></br>
+
+<hr>
+<a name="Tweens"></a><table class="script_info"><tr><td>	
+<script_title>Tweens</script_title>
+</br>Selects and returns the indicated tween id[s]. Supported by all tween scripts which have the multi-tween parameter "<b>tween[s]</b>"
+</br></br><b>Tweens()</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id[s] </br></br>
+<b>Example</b><pre>
+<c>// Pause all indicated tweens</c>
+TweenPause(Tweens(someTween, anotherTween, derpTween));
+</pre></td></tr></table>
+
+<hr>
+<a name="TweensAll"></a><table class="script_info"><tr><td>	
+<script_title>TweensAll</script_title>
+</br>Selects and returns all tween id[s]. Supported by all tween scripts which have the multi-tween parameter "<b>tween[s]</b>"
+</br>The built-in keyword "<b>all</b>" can be used instead.
+</br></br><b>TweensAll()</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id[s] </br></br>
+<b>Example</b><pre>
+<c>// Pause all tweens</c>
+TweenPause(TweensAll());
+
+<c>// Resume all tweens with alternate "<b>all</b>" keyword</c>
+TweenResume(all);
+
+</pre></td></tr></table>
+
+<hr>
+<a name="TweensGroup"></a><table class="script_info"><tr><td>	
+<script_title>TweensGroup</script_title>
+</br>Selects and returns all tween id[s] associated with a group id. Supported by all tween scripts which have the multi-tween parameter "<b>tween[s]</b>"
+</br></br><b>TweensGroup(group)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> group </td><td> Tween group id </td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id[s] </br></br>
+<b>Example</b><pre>
+<c>// Pause all tweens associated with group 2</c>
+TweenPause(TweensGroup(2));
+</pre></td></tr></table>
+
+<hr>
+<a name="TweensTarget"></a><table class="script_info"><tr><td>	
+<script_title>TweensTarget</script_title>
+</br>Selects and returns all tween id[s] associated with a target instance. Supported by all tween scripts which have the multi-tween parameter "<b>tween[s]</b>"
+</br></br><b>TweensTarget(target)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> target </td><td> Target instance id or object index </td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id[s] </br></br>
+<b>Example</b><pre>
+<c>// Pause all tweens associated with a target instance id</c>
+TweenPause(id);
+
+<c>// Resume all tweens associated with a target's object index</c>
+TweenResume(obj_Player);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweensIncludeDeactivated"></a><table class="script_info"><tr><td>	
+<script_title>TweensIncludeDeactivated</script_title>
+</br>Whether or not <b>"Tweens*()"</b> scripts should return tween[s] associated with deactivated targets.
+</br><b>Default = false</b>
+</br></br><b>TweensIncludeDeactivated(target)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> include_deactivated? </td><td> Include tweens belonging to deactivated targets/instances? </td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Set Tweens*() scripts to include deactivated targets</c>
+TweensIncludeDeactivated(true);
+
+<c>// Pause all tweens, even tweens associated with deactivated instances </c>
+TweenPause(all);
+</pre></td></tr></table>
+
+<hr>
+<a name="STATE_CONTROL"></a><h2>=== STATE CONTROL ===</h2>
+The following scripts can change the play state of a tween, such as pausing and resuming.</br></br>
+
+<hr>
+<a name="TweenPause"></a><table class="script_info"><tr><td>	
+<script_title>TweenPause</script_title>
+</br>Pauses the indicated tween
+</br></br><b>TweenPause(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] 		</td><td> Tween id[s]</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Fire tween
+tween = TweenFire(id, EaseLinear, 0, true, 0, 1, "x", x, mouse_x);
+
+<c>// Pause the tween</c>
+TweenPause(tween);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenResume"></a><table class="script_info"><tr><td>	
+<script_title>TweenResume</script_title>
+</br>Resumes the indicated tween
+</br></br><b>TweenResume(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] 		</td><td> Tween id[s]</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Fire tween
+tween = TweenFire(id, EaseLinear, 0, true, 0, 1, "x", x, mouse_x);
+
+<c>// Pause the tween</c>
+TweenPause(tween);
+
+<c>// Resume the tween</c>
+TweenResume(tween);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenStop"></a><table class="script_info"><tr><td>	
+<script_title>TweenStop</script_title>
+</br>Stops the indicated tween
+</br></br><b>TweenStop(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] 		</td><td> Tween id[s]</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Fire tween
+tween = TweenFire(id, EaseLinear, 0, true, 0, 1, "x", x, mouse_x);
+
+<c>// Stop the tween</c>
+TweenStop(tween);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenReverse"></a><table class="script_info"><tr><td>	
+<script_title>TweenReverse</script_title>
+</br>Reverses the indicated tween
+</br></br><b>TweenReverse(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] 		</td><td> Tween id[s]</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Fire tween
+tween = TweenFire(id, EaseLinear, TWEEN_MODE_PATROL, true, 0, 1, "x", x, mouse_x);
+
+<c>// Reverse the tween</c>
+TweenReverse(tween);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenFinish"></a><table class="script_info"><tr><td>	
+<script_title>TweenFinish</script_title>
+</br>Immediately finishes the indicated tween. It also asks if you want to call any "finish" event callbacks.
+</br></br><b>TweenFinish(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] 		</td><td> Tween id[s]</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Fire tween
+tween = TweenFire(id, EaseLinear, 0, true, 0, 1, "x", x, mouse_x);
+
+<c>// Finish tween and call "finish" event</c>
+TweenFinish(tween, true);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenFinishDelay"></a><table class="script_info"><tr><td>	
+<script_title>TweenFinishDelay</script_title>
+</br>Immediately finishes a tween's delay and starts playing the tween. It also asks if you want to call any associated "delay finish" event callbacks.
+</br></br><b>TweenFinishDelay(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] 		</td><td> Tween id[s]</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Fire tween with a 3.0 second delay
+tween = TweenFire(id, EaseLinear, 0, true, 3.0, 1, "x", x, mouse_x);
+
+<c>// Finish the tweens delay and start playing... call delay's "finish" event</c>
+TweenFinishDelay(tween, true);
+</pre></td></tr></table>
+
+<hr>
+<a name="STATE_CHECKS"></a><h2>=== STATE CHECKS ===</h2>
+The following scripts allow you to check the current state of a tween, such as whether it exists or is currently playing.</br></br>
+
+
+<hr>
+<a name="TweenExists"></a><table class="script_info"><tr><td>	
+<script_title>TweenExists</script_title>
+</br>Returns <b>true</b> if the indicated tween exists.
+</br></br><b>TweenExists(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween 		</td><td> Tween id</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> bool </br></br>
+<b>Example</b><pre>
+<c>// Fire tween from x/y to mouse_x/mouse_y</c>
+tween = TweenFire(id, EaseLinear, 0, true, 0, 1, "x", x, mouse_x, "y", y, mouse_y);
+
+<c>// Pause the tween if it exists</c>
+if (TweenExists(tween))
+{
+    TweenPause(tween);
+}
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenIsActive"></a><table class="script_info"><tr><td>	
+<script_title>TweenIsActive</script_title>
+</br>Returns <b>true</b> if the tween is playing or actively processing a delay.
+</br>This is similar to TweenIsPlaying(), except that it also returns <b>true</b> if the tween is delayed.
+</br></br><b>TweenIsActive(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween 		</td><td> Tween id</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> bool </br></br>
+<b>Example</b><pre>
+<c>// Fire tween with a 3.0 second delay</c>
+tween = TweenFire(id, EaseLinear, 0, true, 3.0, 1.0, "x", x, mouse_x);
+
+<c>// Pause the tween if it is playing or delayed</c>
+if (TweenIsActive(tween))
+{
+    TweenPause(tween);
+}
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenIsPlaying"></a><table class="script_info"><tr><td>	
+<script_title>TweenIsPlaying</script_title>
+</br>Returns <b>true</b> if the tween is playing.
+</br>This is similar to TweenIsActive(), except that it will return <b>false</b> if the tween is delayed.
+</br></br><b>TweenIsPlaying(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween 		</td><td> Tween id</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> bool </br></br>
+<b>Example</b><pre>
+<c>// Fire tween with a 3.0 second delay</c>
+tween = TweenFire(id, EaseLinear, 0, true, 3.0, 1.0, "x", x, mouse_x);
+
+<c>// Pause the tween if it is playing</c>
+if (TweenIsPlaying(tween))
+{
+    TweenPause(tween);
+}
+</pre></td></tr></table>
+
+<a name="TweenIsPaused"></a><table class="script_info"><tr><td>	
+<script_title>TweenIsPaused</script_title>
+</br>Returns <b>true</b> if the tween is paused.
+</br></br><b>TweenIsPaused(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween 		</td><td> Tween id</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> bool </br></br>
+<b>Example</b><pre>
+<c>// Fire tween</c>
+tween = TweenFire(id, EaseLinear, 0, true, 0.0, 1.0, "x", x, mouse_x);
+
+<c>// Pause tween</c>
+TweenPause(tween);
+
+<c>// Resume the tween if it is paused</c>
+if (TweenIsPaused(tween))
+{
+    TweenResume(tween);
+}
+</pre></td></tr></table>
+
+<a name="TweenIsStopped"></a><table class="script_info"><tr><td>	
+<script_title>TweenIsStopped</script_title>
+</br>Returns <b>true</b> if the tween is stopped.
+</br></br><b>TweenIsStopped(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween 		</td><td> Tween id</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> bool </br></br>
+<b>Example</b><pre>
+<c>// Fire tween</c>
+tween = TweenFire(id, EaseLinear, 0, true, 0.0, 1.0, "x", x, mouse_x);
+
+<c>// Pause tween</c>
+TweenStop(tween);
+
+<c>// Show message if tween is stopped</c>
+if (TweenIsStopped(tween))
+{
+    show_message("Tween Stopped!");
+}
+</pre></td></tr></table>
+
+
+
+<hr>
+<a name="GET_SET"></a><h2>=== GET / SET ===</h2>
+These scripts let you access or update various tween data properties, such as a tween's duration or starting value.
+</br></br>
+
+<hr>
+<a name="TweenGet"></a><table class="script_info"><tr><td>	
+<script_title>TweenGet</script_title>
+</br>Accesses specific data for a given tween by using a specified data label. If a tween has multiple properties, "start", "destination", and "property" will return an array of values.
+<pre>
+	Supported Data Labels:
+        "group"         -- Group which tween belongs to
+        "time"          -- Current time of tween in steps or seconds
+        "time_amount"   -- Sets the tween's time by a relative amount between 0.0 and 1.0 
+        "time_scale"    -- How fast a tween updates : Default = 1.0
+        "duration"      -- How long a tween takes to fully animate in steps or seconds
+        "ease"          -- The easing algorithm used by the tween
+        "mode"          -- The play mode used by the tween (ONCE, BOUNCE, PATROL, LOOP
+        "target"        -- Target instance associated with tween
+        "delta"         -- Toggle timing between seconds(true) and steps(false)
+        "delay"         -- Current timer of active delay
+        "delay_start"   -- The starting duration for a delay timer
+        "start"         -- Start value of the property or properties
+        "destination"   -- Destination value of the property or properties
+        "property"      -- Property or properties effected by the tween
+</pre>
+<b>TweenGet(tween, dataLabel)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween </td><td> Valid tween id</td></tr>
+<tr><td> dataLabel </td><td> Specified data label</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> real/string </br></br>
+<b>Example</b><pre>
+<c>// Fire a tween</c>
+tween = TweenFire(id, EaseLinear, 0, true, 0.0, 1.0, "x", x, mouse_x);
+
+<c>// Track tween's start and destination values</c>
+start = TweenGet(tween, "start");
+destination = TweenGet(tween, "destination");
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenSet"></a><table class="script_info"><tr><td>	
+<script_title>TweenSet</script_title>
+</br>Changes the specific data for a given tween by using a specified data label. For tweens with multiple properties, "start", "destination", and "property" can be supplied additional arguments. Use keyword [undefined] to leave a value unchanged.
+<pre>
+    Supported Data Labels:
+        "group"         -- Group which tween belongs to
+        "time"          -- Current time of tween in steps or seconds
+        "time_amount"   -- Sets the tween's time by a relative amount between 0.0 and 1.0 
+        "time_scale"    -- How fast a tween updates : Default = 1.0
+        "duration"      -- How long a tween takes to fully animate in steps or seconds
+        "ease"          -- The easing algorithm used by the tween
+        "mode"          -- The play mode used by the tween (ONCE, BOUNCE, PATROL, LOOP
+        "target"        -- Target instance associated with tween
+        "delta"         -- Toggle timing between seconds(true) and steps(false)
+        "delay"         -- Current timer of active delay
+        "delay_start"   -- The starting duration for a delay timer
+        "start"         -- Start value of the property or properties
+        "destination"   -- Destination value of the property or properties
+        "property"      -- Property or properties effected by the tween
+        
+        e.g.
+            tween = TweenFire(id, EaseLinear, 0, true, 0, 1, "x", 0, 100);
+            TweenSet(tween, "duration", 2.5);
+            
+    // The following labels can update multiple properties by supplying
+    // values in the same order the properties were first assigned:
+        
+        "start"
+        "destination"
+        "property"
+        
+        e.g.
+            tween = Tween(id, EaseLinear, 0, true, 0, 1, "x", 0, 100, "y", 0, 100); // multi-property tween (x/y)
+            TweenSet(tween, "start", mouse_x, mouse_y); // update to x/y mouse coordinates
+           
+    // The keyword [undefined] can be used to leave a property value unchanged
+        e.g.
+            TweenSet(tween, "start", undefined, mouse_y); // update "y" but leave "x" unchanged
+</pre>
+<b>TweenSet(tween[s], dataLabel, value, ...)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] </td><td> Valid tween id[s]</td></tr>
+<tr><td> dataLabel </td><td> Specified data label</td></tr>
+<tr><td> value </td><td> New data value</td></tr>
+<tr><td> ... </td><td> (optional) additional values for modifying multi-property tweens
+</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Fire a new tween</c>
+tween = TweenFire(id, EaseLinear, 0, true, 0, 1, "x", 0, 100);
+
+<c>// Change tween's duration to 2.5 seconds</c>
+TweenSet(tween, "duration", 2.5);
+</pre></td></tr></table>
+
+
+<hr>
+<a name="DESTRUCTION"></a><h2>=== DESTRUCTION ===</h2>
+Tweens are automatically memory managed. Tweens created with TweenFire*() will automatically be destroyed when they finish or when their target instance is destroyed. Tweens created with TweenCreate() will auto-destroy only if their target instance is destroyed; they will not auto-destruct when the tween finishes but will continue to be valid.
+</br> However, it is possible to manually destroy a tween if desired using <b>TweenDestroy() or TweenDestroySafe()</b>. It is also possible to force a tween to auto-destroy when finished with <b>TweenDestroyWhenDone()</b>.
+</br></br>
+
+<hr>
+<a name="TweenDestroy"></a><table class="script_info"><tr><td>	
+<script_title>TweenDestroy</script_title>
+</br>Manually destroys tween[s].
+</br></br><b>TweenDestroy(tween[s])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] </td><td> Valid tween id[s]</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Create an undefined tween</c>
+tween = TweenCreate(id);
+
+<c>// Manually destroy the tween</c>
+TweenDestroy(tween);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenDestroySafe"></a><table class="script_info"><tr><td>	
+<script_title>TweenDestroySafe</script_title>
+</br>Manually destroys tween[s]. However, unlike TweenDestroy(), no error will be reported if the tween isn't valid.
+</br></br><b>TweenDestroySafe(tween[s])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] </td><td> Valid tween id[s]</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Manually destroy the tween without checking if it is valid. No error will occur. BE CAREFUL!</c>
+TweenDestroySafe(tween);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenDestroyWhenDone"></a><table class="script_info"><tr><td>	
+<script_title>TweenDestroyWhenDone</script_title>
+</br>Sets whether or not a tween should auto-destroy when it is finished playing.
+</br>Default = true for TweenFire().
+</br>Default = false for TweenCreate().
+</br></br><b>TweenDestroyWhenDone(tween[s], destroy, kill_target)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] 		</td><td> Valid tween id[s]</td></tr>
+<tr><td> destroy? 		</td><td> Destroy tween when finished?</td></tr>
+<tr><td> kill_target? 	</td><td> Destroy the associated target instance when finished?</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Create an undefined tween</c>
+tween = TweenCreate(id);
+
+<c>// Force tween to auto-destroy when it is finished playing</c>
+TweenDestroyWhenDone(tween, true);
+</pre></td></tr></table>
+
+<hr>
+<a name="SPECIAL_HANDLES"></a><h2>=== SPECIAL HANDLES ===</h2>
+The special tween handles are valid tween id's used for specific cases, such as setting a variable to a null tween with TweenNull(), or to change the default behaviour of newly created tweens with TweenDefault().
+</br></br>
+
+<hr>
+<a name="TweenNull"></a><table class="script_info"><tr><td>	
+<script_title>TweenNull</script_title>
+</br>Returns a null tween reference which can be safely called by tween scripts without causing an error.
+</br>Checking if a null tween exists will return false.
+</br></br><b>TweenNull()</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> null tween id </br></br>
+<b>Example</b><pre>
+<c>// Set "tween" variable to a null tween id</c>
+tween = TweenNull();
+
+<c>// No error will be occur if tween is null</c>
+TweenPause(tween);
+
+<c>// Check if the tween exists</c>
+if (TweenExists(tween))
+{
+	// ... this won't execute if tween is null
+}
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenDefault"></a><table class="script_info"><tr><td>		
+<script_title>TweenDefault</script_title>
+</br>Returns a null tween reference which can be safely called by tween scripts without causing an error.
+</br>Checking if a null tween exists will return false.
+</br></br><b>TweenDefault()</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> null tween id </br></br>
+<b>Example</b><pre>
+<c>// Set the default group for new tweens to 2</c>
+TweenSet(TweenDefault(), "group", 2);
+
+<c>// New tween will belong to group 2</c>
+TweenFire(id, EaseLinear, 0, true, 0.0, 1.0, "x", x, mouse_x);
+</pre></td></tr></table>
+
+
+<hr>
+<a name="TOOLS"></a><h2>=== TOOLS ===</h2>
+Various additional scripts for your convenience!
+</br></br>
+
+<hr>
+<a name="Ease"></a><table class="script_info"><tr><td>	
+<script_title>Ease</script_title>
+</br>Works simliar to GameMaker's lerp() function, except that it takes an extra parameter for the ease type.
+</br></br><b>Ease(value1,value2,amount,ease)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> value1 		</td><td> start value</td></tr>
+<tr><td> value2 		</td><td> end value</td></tr>
+<tr><td> amount 	</td><td> amount to interpolate value (0-1)</td></tr>
+<tr><td> ease 		</td><td> ease algorithm script</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> real </br></br>
+<b>Example</b><pre>
+<c>// Find eased value between 0 and 100 at amount of 0.75 with EaseInOutQuad</c>
+value = Ease(0, 100, 0.75, EaseInOutQuad);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenStep"></a><table class="script_info"><tr><td>	
+<script_title>TweenStep</script_title>
+</br><b>
+<pre>
+Steps a tween forward or backward by a given amount.
+The direction can be a decimal (floating point) value.
+        
+Using 1.0 or -1.0 will step a tween 1 step in the indicated direction.
+Lesser values, such as 0.5, will step the tween half a step foward.
+Greater values, such as 2.0, will step a tween 2 steps forward.
+</pre></b>
+
+<b>TweenStep(tween[s], amount)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] 		</td><td> Valid tween id[s] </td></tr>
+<tr><td> amount 	</td><td> Amount to step tween[s] </td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> real </br></br>
+<b>Example</b><pre>
+<c>// Step a tween forward at half speed</c>
+TweenStep(tween1, 0.5);
+
+<c>// Step another tween backward a double speed</c>
+TweenStep(tween2, -2.0);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenPath"></a><table class="script_info"><tr><td>	
+<script_title>TweenPath</script_title>
+</br><b>
+<pre>
+Steps a tween forward or backward by a given amount.
+The direction can be a decimal (floating point) value.
+        
+Using 1.0 or -1.0 will step a tween 1 step in the indicated direction.
+Lesser values, such as 0.5, will step the tween half a step foward.
+Greater values, such as 2.0, will step a tween 2 steps forward.
+</pre></b>
+
+<b>TweenPath(target,ease,mode,delta,delay,dur,path,absolute)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> target 	</td><td> Target instance </td></tr>
+<tr><td> ease 		</td><td> Ease script </td></tr>
+<tr><td> mode 		</td><td> Tween play mode constant </td></tr>
+<tr><td> delta 		</td><td> Use seconds? </td></tr>
+<tr><td> delay 		</td><td> Time to delay start of tween </td></tr>
+<tr><td> dur 		</td><td> Duration of time to play tween </td></tr>
+<tr><td> path 		</td><td> Path id </td></tr>
+<tr><td> absolute 	</td><td> Absolute path position? </td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> tween id </br></br>
+<b>Example</b><pre>
+<c>// Fire a tween using a GameMaker path</c>
+TweenPath(id, EaseLinear, TWEEN_MODE_ONCE, true, 0.0, 1.0, path1, true);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenCalc"></a><table class="script_info"><tr><td>		
+<script_title>TweenCalc</script_title>
+</br>Returns a calculated value using a tween's current state.
+</br></br><b>TweenCalc(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween 		</td><td> Tween ID</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> real </br></br>
+<b>Example</b><pre>
+<c>// Get value of a tween using it's current state</c>
+value = TweenCalc(tween);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenCalcTime"></a><table class="script_info"><tr><td>		
+<script_title>TweenCalcTime</script_title>
+</br>Returns a calculated value using a tween's current state at a specified point in time.
+</br>Note: Useful with null property setters which can be set by using TPNull() as the property argument.
+</br></br><b>TweenCalcTime(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween 		</td><td> Tween ID</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> real </br></br>
+<b>Example</b><pre>
+<c>// Create defined tween with a duration of 3.0 seconds</c>
+tween = TweenCreate(id, EaseInOutQuint, 0, true, 0.0, 3.0, TPNull(), x, mouse_x);
+        
+<c>// Calculate value of tween at 1.5 seconds</c>
+x = TweenCalcTime(tween, 1.5);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenCalcAmount"></a><table class="script_info"><tr><td>		
+<script_title>TweenCalcAmount</script_title>
+</br>Returns a calculated value using a tween's current state at a relevant point in time.
+</br>Note: Useful with null property setters which can be set by using TPNull() as the property argument.
+</br></br><b>TweenCalcAmount(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween 		</td><td> Tween ID</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> real </br></br>
+<b>Example</b><pre>
+<c>// Create defined tween with a duration of 3.0 seconds</c>
+tween = TweenCreate(id, EaseInOutQuint, 0, true, 0.0, 3.0, TPNull(), x, mouse_x);
+        
+<c>// Calculate value of tween at 25% through time</c>
+x = TweenCalcAmount(tween, 0.25);
+</pre></td></tr></table>
+
+
+<hr>
+<a name="ADVANCED_PROPERTIES"></a><h2>=== ADVANCED PROPERTIES ===</h2>
+Advanced tween property (TP*) scripts can be used in place of a property for more advanced uses. They include the ability to ease values belonging to various data structures. They can also be used to pass extended data to an advanced property script, or to use User Events for advanced properties.
+</br></br>
+
+<hr>
+<a name="TPNull"></a><table class="script_info"><tr><td>		
+<script_title>TPNull</script_title>
+</br>Returns a null property which eases no value directly.
+</br>This is useful if you want to manually calculate the tweened value with the TweenCalc() script.
+</br></br><b>TPNull(tween)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> null property </br></br>
+<b>Example</b><pre>
+<c>// Tween a null property from 0 to 100</c>
+tween = TweenFire(id, EaseLinear, 0, true, 0.0, 1.0, TPNull(), 0, 100);
+        
+<c>// Manually calculate and store the tween's current value</c>
+myValue = TweenCalc(tween);
+</pre></td></tr></table>
+
+<hr>
+<a name="TPExt"></a><table class="script_info"><tr><td>		
+<script_title>TPExt</script_title>
+</br>Prepares an extended property script with custom arguments to be passed to it.
+</br></br><b>TPExt(property,[arg0,...])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> property 		</td><td> Property script id</td></tr>
+<tr><td> arg0... 		</td><td> Values to be passed to advanced property script</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> extended property </br></br>
+<b>Example</b><pre>
+<c>// Create a defined tween with an extended property</c>
+tween = TweenCreate(id, EaseInQuad, 0, true, 0.0, 3.0, TPExt(extColourBlend, c_red, c_blue), 0, 1);
+        
+<c>/// extColourBlend Script</c>
+var _value = argument0;
+var _data = argument1;
+var _target = argument2;
+_target.image_blend = merge_colour(_data[0], _data[1], _value);
+</pre></td></tr></table>
+
+<hr>
+<a name="TPUser"></a><table class="script_info"><tr><td>		
+<script_title>TPUser</script_title>
+</br>Prepares an extended property with custom arguments to be passed to a user event for calculation.
+</br></br><b>TPUser(user_event,[arg0,...])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> user_event 	</td><td> An object's user event</td></tr>
+<tr><td> arg0... 		</td><td> (optional) Values to be passed to advanced property script</td></tr>\
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> extended property </br></br>
+<b>Example</b><pre>
+<c>// Create a defined tween with an extended property</c>
+tween = TweenCreate(id, EaseInQuad, 0, true, 0.0, 3.0, TPUser(0, c_red, c_blue), 0, 1);
+        
+<c>/// User Event 0</c>
+var _value = TWEEN_USER_VALUE;
+var _data = TWEEN_USER_DATA;
+var _target = TWEEN_USER_TARGET;
+_target.image_blend = merge_colour(_data[0], _data[1], _value);
+</pre></td></tr></table>
+
+<hr>
+<a name="TPArray"></a><table class="script_info"><tr><td>		
+<script_title>TPArray</script_title>
+</br>Passes an array and its indexed value to be tweened. It supports both 1d and 2d arrays depending on the number of arguments supplied.
+</br></br><b>TPArray(array,x,[y])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> array 	</td><td> Valid array</td></tr>
+<tr><td> x 		</td><td> The x index for array</td></tr>
+<tr><td> [y] 	</td><td> (optional) The y index for a 2d array</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> array property </br></br>
+<b>Example</b><pre>
+<c>// Create a 1d array and pass it as the tween property with TPArray().</c>
+myArray[0] = 0;
+tween = TweenFire(id, EaseInQuad, 0, true, 0.0, 3.0, TPArray(myArray, 0), 0, 100);
+        
+<c>// Get value from tweened array index</c>
+value = myArray[0];
+</pre></td></tr></table>
+
+<hr>
+<a name="TPList"></a><table class="script_info"><tr><td>		
+<script_title>TPList</script_title>
+</br>Passes a list and its indexed value to be tweened.
+</br></br><b>TPList(list,index)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> list 	</td><td> Valid ds_list id</td></tr>
+<tr><td> index 	</td><td> The index of the list to tween</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> list property </br></br>
+<b>Example</b><pre>
+<c>// Create a list and pass it as the tween property with TPList().</c>
+myList = ds_list_create();
+myList[| 0] = 0;
+tween = TweenFire(id, EaseInQuad, 0, true, 0.0, 3.0, TPList(myList, 0), 0, 100);
+        
+<c>// Get value from tweened array index</c>
+value = myList[| 0];
+</pre></td></tr></table>
+
+<hr>
+<a name="TPMap"></a><table class="script_info"><tr><td>		
+<script_title>TPMap</script_title>
+</br>Passes a map and its key value to be tweened.
+</br></br><b>TPMap(map,key)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> map 	</td><td> Valid map id</td></tr>
+<tr><td> key 	</td><td> The key of the map to tween</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> map property </br></br>
+<b>Example</b><pre>
+<c>// Create a map and pass it as the tween property with TPMap().</c>
+myMap = ds_map_create();
+myMap[? "key"] = 0;
+tween = TweenFire(id, EaseInQuad, 0, true, 0.0, 3.0, TPMap(myList, "key"), 0, 100);
+        
+<c>// Get value from tweened map key</c>
+value = myMap[? "key"];
+</pre></td></tr></table>
+
+<hr>
+<a name="TPGrid"></a><table class="script_info"><tr><td>		
+<script_title>TPGrid</script_title>
+</br>Passes a grid and its indexed value to be tweened.
+</br></br><b>TPGrid(grid,x,y)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> grid 	</td><td> Valid grid id</td></tr>
+<tr><td> x 		</td><td> The x index for grid</td></tr>
+<tr><td> y 		</td><td> The y index for grid</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> grid property </br></br>
+<b>Example</b><pre>
+<c>// Create a grid and pass it as the tween property with TPGrid().</c>
+myGrid = ds_grid_create(10,10);
+tween = TweenFire(id, EaseInQuad, 0, true, 0.0, 3.0, TPGrid(myGrid, 2, 4), 0, 100);
+        
+<c>// Get value from tweened grid index</c>
+value = myGrid(# 2, 4);
+</pre></td></tr></table>
+
+
+<hr>
+<a name="EVENT_CALLBACKS"></a><h2>=== EVENT CALLBACKS ===</h2>
+<b><pre>Event callbacks allow you to execute scripts or user events when a specified tween event occurs.
+The following tween events are:
+	
+	TWEEN_EV_PLAY		-- When tween starts to play
+	TWEEN_EV_FINISH		-- When tween is finished playing
+	TWEEN_EV_CONTINUE	-- When tween continues with TWEEN_MODE_BOUNCE, TWEEN_MODE_PATROL, TWEEN_MODE_REPEAT
+	TWEEN_EV_STOP		-- When tween is manually stopped
+	TWEEN_EV_PAUSE		-- When tween is paused
+	TWEEN_EV_RESUME		-- When tween is resumed
+	TWEEN_EV_REVERSE  	-- When tween is reversed
+	
+There are also events for delayed tweens:
+
+	TWEEN_EV_FINISH_DELAY	-- When a tween's delay expires
+	TWEEN_EV_STOP_DELAY  	-- When a delayed tween is stopped
+	TWEEN_EV_PAUSE_DELAY	-- When a delayed tween is paused
+	TWEEN_EV_RESUME_DELAY	-- When a paused delayed tween is resumed
+</pre></b>
+</br>
+
+
+<hr>
+<a name="TweenAddCallback"></a><table class="script_info"><tr><td>		
+<script_title>TweenAddCallback</script_title>
+</br>Adds a script to be called for the specified event.
+</br></br><b>TweenAddCallback(tween,event,target,script,[arg0...])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween 		</td><td> Tween id</td></tr>
+<tr><td> event 		</td><td> Tween event macro (e.g. TWEEN_EV_FINISH)</td></tr>
+<tr><td> target 	</td><td> Target instance id</td></tr>
+<tr><td> script 	</td><td> Script resource id (e.g. MyScript)</td></tr>
+<tr><td> [arg0...] 	</td><td> (optional) Arguments to pass to script</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> callback id </br></br>
+<b>Example</b><pre>
+<c>// Fire a tween</c>
+tween = TweenFire(id, EaseInQuad, 0, true, 0.0, 1.0, "x", x, mouse_x);
+
+<c>// Have a script execute when tween finishes</c>
+TweenAddCallback(tween, TWEEN_EV_FINISH, id, ShowMessage, "Finished!");
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenAddCallbackUser"></a><table class="script_info"><tr><td>		
+<script_title>TweenAddCallbackUser</script_title>
+</br>Adds a user event to be called for the specified event.
+</br></br><b>TweenAddCallbackUser(tween,event,target,user_event)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween 		</td><td> Tween id</td></tr>
+<tr><td> event 		</td><td> Tween event macro (e.g. TWEEN_EV_FINISH)</td></tr>
+<tr><td> target 	</td><td> Target instance id</td></tr>
+<tr><td> user_event </td><td> Object user event (e.g. 0-15)</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> callback id </br></br>
+<b>Example</b><pre>
+<c>// Fire a tween</c>
+tween = TweenFire(id, EaseInQuad, 0, true, 0.0, 1.0, "x", x, mouse_x);
+
+<c>// Have a user event 5 execute when tween finishes</c>
+cb = TweenAddCallbackUser(tween, TWEEN_EV_FINISH, id, 5);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenCallbackNull"></a><table class="script_info"><tr><td>		
+<script_title>TweenCallbackNull</script_title>
+</br>Returns a null callback id.
+</br></br><b>TweenCallbackNull()</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> null callback id </br></br>
+<b>Example</b><pre>
+<c>// Set a null callback</c>
+cb = TweenCallbackNull();
+
+<c>// No error will occur when calling null callback</c>
+TweenCallbackInvalidate(cb);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenCallbackInvalidate"></a><table class="script_info"><tr><td>		
+<script_title>TweenCallbackInvalidate</script_title>
+</br>Invalidates (destroys) the given callback id.
+</br></br><b>TweenCallbackInvalidate(callback)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> callback 		</td><td> Callback id</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Add callback to a tween</c>
+cb = TweenAddCallback(tween, TWEEN_EV_FINISH, id, ShowMessage, "Hi!");
+
+<c>// Invalidate (destroy) the callback if valid</c>
+if (TweenCallbackIsValid(cb))
+{
+	TweenCallbackInvalidate(cb);
+}
+else
+{
+	show_message("Callback already invalidated!");
+}
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenCallbackIsValid"></a><table class="script_info"><tr><td>		
+<script_title>TweenCallbackIsValid</script_title>
+</br>Checks if a callback id is valid.
+</br></br><b>TweenCallbackIsValid(callback)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> callback 		</td><td> Callback id</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> bool </br></br>
+<b>Example</b><pre>
+<c>// Add callback to a tween</c>
+cb = TweenAddCallback(tween, TWEEN_EV_FINISH, id, ShowMessage, "Hi!");
+
+<c>// Check if a callback id is valid</c>
+if (TweenCallbackIsValid(cb))
+{
+	show_message("Callback is valid!");
+}
+else
+{
+	show_message("Callback is not valid!");
+}
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenCallbackEnable"></a><table class="script_info"><tr><td>		
+<script_title>TweenCallbackEnable</script_title>
+</br>Allows callbacks to be temporarily disabled/enabled.
+</br></br><b>TweenCallbackEnable(callback,enable)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> callback 		</td><td> Callback id</td></tr>
+<tr><td> enable 		</td><td> Enable the callback?</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Add callback to a tween</c>
+cb = TweenAddCallback(tween, TWEEN_EV_FINISH, id, ShowMessage, "Hi!");
+
+<c>// Temporarily disable the callback</c>
+TweenCallbackEnable(tween, false);
+
+<c>// Re-enable the disabled callback</c>
+TweenCallbackEnable(tween, true);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenCallbackIsEnabled"></a><table class="script_info"><tr><td>		
+<script_title>TweenCallbackIsEnabled</script_title>
+</br>Checks if callback is enabled.
+</br></br><b>TweenCallbackIsEnabled(callback)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> callback 		</td><td> Callback id</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> bool </br></br>
+<b>Example</b><pre>
+<c>// Add callback to a tween</c>
+cb = TweenAddCallback(tween, TWEEN_EV_FINISH, id, ShowMessage, "Hi!");
+
+<c>// Temporarily disable the callback</c>
+TweenCallbackEnable(tween, false);
+
+<c>// Show message if callback not enabled</c>
+if (TweenCallbackIsEnabled(cb) == false)
+{
+	show_message("Callback is disabled!");
+}
+</pre></td></tr></table>
+
+
+<hr>
+<a name="EVENT_MANAGEMENT"></a><h2>=== EVENT MANAGEMENT ===</h2>
+Allows you to manage whole tween events related to event callbacks.
+</br></br>
+
+<hr>
+<a name="TweenEventClear"></a><table class="script_info"><tr><td>		
+<script_title>TweenEventClear</script_title>
+</br>Invalidates all callbacks associated with specified tween event.
+</br></br><b>TweenEventClear(tween[s], event)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] 	</td><td> Tween id[s]</td></tr>
+<tr><td> event 		</td><td> Tween event macro (e.g. TWEEN_EV_FINISH)</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Fire a tween</c>
+tween = TweenFire(id, EaseLinear, 0, true, 0.0, 1.0, "y", y, mouse_y);
+
+<c>// Add callback to tween</c>
+cb = TweenAddCallback(tween, TWEEN_EV_FINISH, id, ShowMessage, "Hi!");
+
+<c>// Invalidate all callbacks associated with tween event "finish"
+TweenEventClear(tween, TWEEN_EV_FINISH);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenEventEnable"></a><table class="script_info"><tr><td>		
+<script_title>TweenEventEnable</script_title>
+</br>Enables/disables specified tween event.
+</br></br><b>TweenEventEnable(tween[s], event)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] 	</td><td> Tween id[s]</td></tr>
+<tr><td> event 		</td><td> Tween event macro (e.g. TWEEN_EV_FINISH)</td></tr>
+<tr><td> enable? 	</td><td> Enable event?</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Fire a tween</c>
+tween = TweenFire(id, EaseLinear, 0, true, 0.0, 1.0, "y", y, mouse_y);
+
+<c>// Add callback to tween</c>
+cb = TweenAddCallback(tween, TWEEN_EV_FINISH, id, ShowMessage, "Hi!");
+
+<c>// Disable event callbacks associated with tween event "finish"
+TweenEventEnable(tween, TWEEN_EV_FINISH, false);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenEventIsEnabled"></a><table class="script_info"><tr><td>		
+<script_title>TweenEventIsEnabled</script_title>
+</br>Checks if the specified callback event is enabled.
+</br></br><b>TweenEventIsEnabled(tween[s], event)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> tween[s] 	</td><td> Tween id[s]</td></tr>
+<tr><td> event 		</td><td> Tween event macro (e.g. TWEEN_EV_FINISH)</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> bool </br></br>
+<b>Example</b><pre>
+<c>// Fire a tween</c>
+tween = TweenFire(id, EaseLinear, 0, true, 0.0, 1.0, "y", y, mouse_y);
+
+<c>// Add callback to tween if event is enabled</c>
+if (TweenEventIsEnabled(tween, TWEEN_EV_FINISH))
+{
+	cb = TweenAddCallback(tween, TWEEN_EV_FINISH, id, ShowMessage, "Hi!");
+}
+</pre></td></tr></table>
+
+
+<hr>
+<a name="SYSTEM_UTILITIES"></a><h2>=== SYSTEM UTILITIES ===</h2>
+Scripts for managing system-wide state.
+</br></br>
+
+<hr>
+<a name="TweenSystemGet"></a><table class="script_info"><tr><td>	
+<script_title>TweenSystemGet</script_title>
+</br>Accesses system data state by using a specified data label.
+<b><pre>
+SUPPORTED DATA LABELS:
+	"enabled"		// is system enabled?
+	"time_scale"		// global time scale
+	"update_interval"	// how often system should update in steps (default = 1)
+	"min_delta_fps"		// minimum frame rate before delta time lags begin (default=10)
+	"auto_clean_count"	// number of tweens to check for auto-cleaning each step (default=10)
+	"delta_time"		// tweening systems internal delta time
+	"delta_time_scaled" 	// tweening systems scaled delta time
+</pre></b>
+<b>TweenSystemGet(dataLabel)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> dataLabel </td><td> Specified data label</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> real </br></br>
+<b>Example</b><pre>
+<c>// Get the system's current time scale value</c>
+timeScale = TweenSystem("time_scale");
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenSystemSet"></a><table class="script_info"><tr><td>	
+<script_title>TweenSystemSet</script_title>
+</br>Updates system data state by using a specified data label.
+<b><pre>
+SUPPORTED DATA LABELS:
+	"enabled"		// is system enabled?
+	"time_scale"		// global time scale
+	"update_interval"	// how often system should update in steps (default = 1)
+	"min_delta_fps"		// minimum frame rate before delta time lags begin (default=10)
+	"auto_clean_count"	// number of tweens to check for auto-cleaning each step (default=10)
+</pre></b>
+<b>TweenSystemSet(dataLabel, value)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> dataLabel </td><td> Specified data label</td></tr>
+<tr><td> value </td><td> New data value</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Set the system's current time scale to 0.5 (half speed)</c>
+TweenSystem("time_scale", 0.5);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenSystemCount"></a><table class="script_info"><tr><td>	
+<script_title>TweenSystemCount</script_title>
+</br>Returns total number of tweens in system, excluding those in inactive persistent rooms. Can pass optional label in for counting only specific tweens.
+<b><pre>
+OPTIONAL TWEEN LABELS:
+	"all"
+	"playing"
+	"paused"
+	"stopped"
+</pre></b>
+<b>TweenSystemCount([dataLabel])</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> dataLabel </td><td> (optional) Specified data label</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> real </br></br>
+<b>Example</b><pre>
+<c>// Get number of tweens in system</c>
+tCountAll = TweenSystemCount();
+
+<c>// Get number of tweens playing </c>
+tCountPlaying = TweenSystemCount("playing");
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenSystemClearRoom"></a><table class="script_info"><tr><td>	
+<script_title>TweenSystemClearRoom</script_title>
+</br>Clears tweens in inactive persistent room(s).
+</br></br><b>TweenSystemClearRoom(room)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> room </td><td> Room index or [all] keyword for all rooms
+</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Destroy tweens in persistent menu room</c>
+TweenSystemClearRoom(rm_Menu);
+
+<c>// Destroy tweens in all persistent rooms </c>
+TweenSystemClearRoom(all);
+</pre></td></tr></table>
+
+<hr>
+<a name="TweenSystemFlushDestroyed"></a><table class="script_info"><tr><td>	
+<script_title>TweenSystemFlushDestroyed</script_title>
+</br>Overrides passive memory manager by immediately removing all destroyed tweens from the system.
+</br></br><b>TweenSystemFlushDestroyed()</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Immediately flush all destroyed tweens from system</c>
+TweenSystemFlushDestroyed();
+</pre></td></tr></table>
+
+<hr>
+<a name="SharedTweenerActivate"></a><table class="script_info"><tr><td>	
+<script_title>SharedTweenerActivate</script_title>
+</br>Activate obj_SharedTweener controller object if deactivated. Only use if you know what you're doing! :)
+</br></br><b>SharedTweenerActivate()</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Activate the shared tweener controller object if deactivated</c>
+SharedTweenerActivate();
+</pre></td></tr></table>
+
+<hr>
+<a name="SharedTweenerDestroy"></a><table class="script_info"><tr><td>	
+<script_title>SharedTweenerDestroy</script_title>
+</br>Destroys obj_SharedTweener controller object. Only use this if you know what you're doing!
+</br></br><b>SharedTweenerDestroy()</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Destroy the shared tweener controller object</c>
+SharedTweenerDestroy();
+</pre></td></tr></table>
+
+
+<hr>
+<a name="PROPERTY_BUILDERS"></a><h2>=== PROPERTY BUILDERS ===</h2>
+Required for creating optimised, extended, or normalized properties. These should be called once at the start of your game. Ideal for advanced users only.
+</br></br>
+In <b>TweenGMS -> Properties -> TGMS_BuildDefaultProperties()</b> script, please see <b>"x"</b> for an instance example, <b>"image_blend"</b> for a normalized example, <b>"score"</b> for a global example, and <b>"background_colour"</b> for a normalized global example.
+</br>
+</br>To optimise property performance, you must create a SETTER and GETTER script for each before calling TGMS_BuildProperty().
+</br><pre>
+	[EXAMPLE FOR INSTANCE VARIABLE]
+	
+	/// SETTER SCRIPT --> myVariable__
+	var _value = argument0; // updated value is passed as argument0
+	var _target = argument1; // target instance is passed as argument1
+	_target.myVariable = _value; // update instance's "myVariable" to updated value
+	
+	/// GETTER SCRIPT --> __myVariable
+	var _target = argument0; // target instance is passed as argument0
+	return _target.myVariable; // return the target instance's "myVariable" value
+	
+	/// Apply property builder with scripts above, only once at start of game
+	TGMS_BuildProperty("myVariable", myVariable__, __myVariable);
+	
+	
+	[EXAMPLE FOR GLOBAL VALUE]
+	
+	/// SETTER SCRIPT --> myValue__
+	var _value = argument0; // updated value is passed as argument0
+	global.myValue = _value; // update global "myValue" to updated value
+	
+	/// GETTER SCRIPT --> __myValue
+	return global.myValue; // return the global value "myValue"
+	
+	/// Apply property builder with scripts above, only once at start of game
+	TGMS_BuildProperty("myValue", myValue__, __myValue);
+</pre>
+</br></br>
+
+<hr>
+<a name="TGMS_BuildProperty"></a><table class="script_info"><tr><td>	
+<script_title>TGMS_BuildProperty</script_title>
+</br>Prepares a property to be optimised for better performance.
+</br></br><b>TGMS_BuildProperty("label", setter, getter)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> label </td><td> String to associate with property
+<tr><td> setter </td><td> Setter script to associate with property
+<tr><td> getter </td><td> Getter script to associate with property
+</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Prepare a property to be optmised with a setter and getter script</c>
+TGMS_BuildProperty("x", x__, __x);
+</pre></td></tr></table>
+
+<hr>
+<a name="TGMS_BuildPropertyNormalize"></a><table class="script_info"><tr><td>	
+<script_title>TGMS_BuildPropertyNormalize</script_title>
+</br>Prepares a property to be normalized for values between 0-1. Look up the <b>image_blend__,</b> and _<b>_image_blend</b> scripts for an example.
+</br></br><b>TGMS_BuildPropertyNormalize("label", setter, getter)</b>
+</td></tr></table><table border="1"><col class="col_def_left"> <col class="col_def_right">
+<tr><td> label </td><td> String to associate with property
+<tr><td> setter </td><td> Setter script to associate with property
+<tr><td> getter </td><td> Getter script to associate with property
+</td></tr>
+</table><table class="script_info"><tr><td>
+<b>Returns:</b> na </br></br>
+<b>Example</b><pre>
+<c>// Prepare a property to be normalized for values between 0-1.</c>
+TGMS_BuildPropertyNormalize("image_blend", image_blend__, __image_blend);
+</pre></td></tr></table>
+
+</br></br></br></br></br></br></br></br></br></br>
+
+
+</pre>
+</div>
+
+</body>
+</html>

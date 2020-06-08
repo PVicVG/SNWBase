@@ -1,0 +1,2 @@
+return background_colour;
+

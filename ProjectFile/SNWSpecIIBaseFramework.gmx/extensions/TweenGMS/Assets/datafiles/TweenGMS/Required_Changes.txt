@@ -1,0 +1,65 @@
+
+[CHANGES FROM v0.9.7*)
+
+- TweenSimple*() scripts have been changed to TweenEasy*() variants and now support an optional [mode] argument.
+
+- TweenFire, TweenCreate, TweenPlay have all been overhauled and are NOT backwards compatible.
+  * They now support multiple properties in a single tween
+  * TweenFire has To/From variants which make use of new property getters
+  * They now support "x"/"y"/"etc" stringed properties instead of x__/y__ script names.
+	Example:
+		TweenFire(id, EaseLinear, 0, true, 0, 1, "x", x, mouse_x, "y", y, mouse_y);
+	
+		// You can use up to 10 properties with a single tween call
+		TweenFireTo(id, EaseLinear, 0, true, 0, 1,
+							  "x", mouse_x,
+						          "y", mouse_y,
+							  "image_angle", 360,
+							  "image_scale", 2.0)
+
+		
+- TweenSet() and TweenGet() have replaced the various TweenGet*() and TweenSet*() scripts.
+  * They now receive string labels for modifying the appropriate tween setting.
+  * Please open and read the respective TweenGet() and TweenSet() scripts to find all supported string labels.
+	e.g.
+		TweenSet(tween, "time_scale", 0.5);
+		TweenSet(tween, "duration", 3.0);
+		destination = TweenGet(tween, "destination");
+
+- Tweens(), TweensAll(), TweensGroup, and TweensTarget() have replaced the *All, *Group, *Target script variants.
+  * Any script with the tween[s] argument supports them
+	e.g.
+		TweenPause(TweensAll());
+		TweenDestroy(TweensGroup(5));
+		TweenResume(TweensTarget(id));
+		TweenReverse(TweensTarget(obj_Player));
+
+  	* TweensAll() has a shorthand version using the keyword [all]
+	e.g.
+		TweenResume(all);
+
+- User Events can now be used as property setters/getters using the TPUser() property script
+  with TWEEN_USER_TARGET and TWEEN_USER_VALUE macros. 
+	e.g.
+		// Some Event
+		TweenFire(id, EaseLinear, 0, false, 0, 1, TPUser(0), 0, 100);
+
+		// User Event 0
+		TWEEN_USER_TARGET.coolVariable = TWEEN_USER_VALUE;
+  
+  * Here is a quick example showing how to set up a getter/setter version to support TweenFireTo/From()
+	e.g.
+		// User Event 0
+		if (TWEEN_USER_GET)
+		{   // Getter
+		    TWEEN_USER_GET = TWEEN_USER_TARGET.coolVariable;
+		}
+		else
+		{   // Setter
+		    TWEEN_USER_TARGET.coolVariable = TWEEN_USER_VALUE;
+		}
+
+
+
+	Thanks for reading!
+	Please feel free to send feedback to tweengms@8bitwarrior.com
