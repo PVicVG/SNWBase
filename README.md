@@ -1,6 +1,6 @@
 # Sonic Network World Base Framework
 
-![image](https://media.discordapp.net/attachments/707282353269243905/719353118843994192/SNWSpecIIBaseFrameworkLogo.png)
+![image](https://media.discordapp.net/attachments/397494700766134273/719358642679185458/SNWBaseFramework.png)
 
 This github depository is dedicated to an upgraded version of a framework made by AleksNB called S8E/ SSE/ Harinezumi featuring more gimmicks and some tweaks that are necessary due to it's purpose, which is exclusively for people which have GameMaker Studio be able to make stages for our fan project Sonic Network World. 
 
