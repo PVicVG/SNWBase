@@ -12,10 +12,14 @@
   <showcolour>-1</showcolour>
   <code>/// Zone init. 
 
-    global.zone_name      = "ENGINE TEST"
+    global.zone_name      = "TEMPLATE ZONE"
     global.zone_act       =  0;
     global.water_position = -1;
-    global.death_height   = -1;</code>
+    global.death_height   = -1;
+    
+    // Trivia. (Optional. Set it to "" if it's not meant to be in your stage.)
+global.zone_trivia = "9:00PM - 5°C
+Maek Staeg."</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

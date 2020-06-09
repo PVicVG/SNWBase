@@ -149,6 +149,15 @@
         // Follow the player smoothly
             x += (obj_player.x - x) * 0.1;
             y += (obj_player.y - y) * 0.1;
+            
+            if obj_player.x &gt; x
+            {
+                image_xscale = 1;
+            }
+            else
+            {
+                image_xscale = -1;
+            }
         
         // Interact with player
             var p;

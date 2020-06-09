@@ -1326,7 +1326,7 @@ player_set_harmfullness()
      if(ground)
      {
         y_speed = 0;
-        if(state = STATE_JUMP || state = STATE_HURT || state == STATE_SPRING)
+        if(state = STATE_JUMP || state == STATE_SPRING)
         {
            if(state = STATE_HURT)
            {
