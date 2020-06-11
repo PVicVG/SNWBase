@@ -44,7 +44,8 @@ physics_create(true, true, false, false, false)
 animation_direction = -1;
 state = 0;
 inv_timer = -1; 
-hp = 10;
+max_hp = 10;
+hp = max_hp;
 outside_view_timer = -1;
 </string>
           </argument>
@@ -321,10 +322,12 @@ event_user(0)
           <argument>
             <kind>1</kind>
             <string>/// State -1 - Death
-if state == -1
+if (state == -1)
 {
     aud_play_simple(general_die);
     scr_tear_apart();
+    create_rings(x, y - 10, 30)
+    aud_play_simple(player_ring_drop)
     instance_destroy();
     
     with(obj_chaos_camera){
@@ -387,40 +390,38 @@ if ground &amp;&amp; state == 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// State 2 - Things
-if state == 2
-{
-
-if obj_player.x &lt; x
-{
-animation_direction = -1;
-}
-else
-{
-animation_direction = 1;
-}
-
-if ground
-{
-    instance_create(x, y, obj_chaos_droplet)
-    create_hammer_drop_dust()
-    aud_play_simple(general_blob)
-    
-    if inview()
+            <string>/// State 2 - Main Actions.
+    if (state == 2)
     {
-        x_speed = animation_direction * (2 + random_range(1, 8)) * (sign(inv_timer) * -1);
-        y_speed = -random_range(5, 10)
-    }
-    else
-    {
-        x_speed = animation_direction * 9;
-        y_speed = -15;
-    }
+        // Face Towards Player
+            if (obj_player.x &lt; x)
+            {
+                animation_direction = -1;
+            }
+            else
+            {
+                animation_direction = 1;
+            }
     
-    
-}
-
-}
+        // Jump
+            if (ground)
+            {
+                instance_create(x, y, obj_chaos_droplet)
+                create_hammer_drop_dust()
+                aud_play_simple(general_blob)
+                
+                if inview()
+                {
+                    x_speed = animation_direction * (2 + random_range(1, 8)) * (sign(inv_timer) * -1);
+                    y_speed = -random_range(5, 10)
+                }
+                else
+                {
+                    x_speed = animation_direction * 9;
+                    y_speed = -15;
+                }   
+            }
+    }
 
 </string>
           </argument>
@@ -446,52 +447,60 @@ if ground
             <kind>1</kind>
             <string>/// Hitting
 
-// Exit If Dead
-if state == -1 or other.state == STATE_DEATH
-{
-    exit;
-}
-
-// Only hit if not invincibile
-if inv_timer == -1
-{
-    if !other.harmful
-    {
-        with other
+    // Exit If Dead
+        if (state == -1 or other.state == STATE_DEATH)
         {
-            scr_player_hurt()
+            exit;
         }
-    }
-    else
-    {
-        inv_timer = 60;
-        hp -= 1;
-        aud_play_simple(general_enemy_hit)
-    }
-}
-
-// Knockback
-    x_speed = 5 * sign(x - other.x) 
-    y_speed = 5 * sign(y - other.y)
     
-    with other
-    {
-        x_speed = 5 * sign(x - other.x)
-        y_speed = 5 * sign(y - other.y) 
-        
-        if harmful
+    // Only hit if not invincibile
+        if (inv_timer == -1)
         {
-            if ground
+            if !(other.harmful)
             {
-                state = STATE_ROLL;
+                with (other)
+                {
+                    scr_player_hurt()
+                }
             }
             else
             {
-                state = STATE_JUMP;
+                inv_timer = 60;
+                hp -= 1;
+                aud_play_simple(general_enemy_hit)
             }
         }
+    
+    // Knockback
+        x_speed = 5 * sign(x - other.x) 
+        y_speed = 5 * sign(y - other.y)
         
-    }
+        with (other)
+        {
+            if (other.x != x)
+            {
+                x_speed = 5 * sign(x - other.x)
+            }
+            else
+            {
+                x_speed = 5 * -animation_direction;
+            }
+            
+            y_speed = 5 * sign(y - other.y) 
+            
+            if (harmful)
+            {
+                if (ground)
+                {
+                    state = STATE_ROLL;
+                }
+                else
+                {
+                    state = STATE_JUMP;
+                }
+            }
+            
+        }
 </string>
           </argument>
         </arguments>

@@ -8,6 +8,7 @@
  // Initialize Palette System
     pal_swap_init_system(shd_pal_swapper)
     global.custom_palette = 0;
+    global.shaders = true; // Can we use shaders?
 
  // Fonts:
     global.main_font       = font_add_sprite(font_main, ord("!"), true , 1);
@@ -120,6 +121,10 @@
             save_create();
         }
     
+    // Our device can't handle shaders, so deactivate them:
+      if(!shader_is_compiled(shd_pal_swapper)){
+          global.shaders = false;
+      }
   
  // Screen size.
     window_center();

@@ -1568,6 +1568,7 @@
         <script>scripts\respawnables_init.gml</script>
         <script>scripts\respawn_respawnables.gml</script>
       </scripts>
+      <script>scripts\create_rings.gml</script>
       <script>scripts\scr_fade_to.gml</script>
       <script>scripts\scr_cam_shake.gml</script>
       <script>scripts\create_hammer_drop_dust.gml</script>
@@ -1628,7 +1629,6 @@
     <font>fonts\fnt_debug</font>
   </fonts>
   <objects name="objects">
-    <object>objects\par_platform</object>
     <objects name="Terrain">
       <objects name="Tiles">
         <objects name="Solid">
@@ -2159,6 +2159,7 @@
           <object>objects\par_terrain</object>
           <object>objects\par_solid</object>
           <object>objects\par_solid_no_angle</object>
+          <object>objects\par_platform</object>
           <object>objects\par_platform_no_angle</object>
           <object>objects\par_layer0</object>
           <object>objects\par_layer0_no_angle</object>
@@ -2300,6 +2301,7 @@
     <rooms name="Test Areas">
       <room>rooms\rm_playground_0</room>
       <room>rooms\rm_playground_1</room>
+      <room>rooms\rm_layertest</room>
       <room>rooms\rm_playground_2</room>
     </rooms>
     <rooms name="Misc">

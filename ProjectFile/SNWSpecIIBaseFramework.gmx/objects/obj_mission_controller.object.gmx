@@ -52,8 +52,9 @@
         
 /// ============== Data
 
-        mission_total = "";    
-        alarm[0] = 5;
+    initialized = false
+    mission_total = "";    
+    alarm[0] = 5;
         
 </string>
           </argument>
@@ -85,6 +86,31 @@ event_user(0)
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Exit if not initialized.
+    if (initialized = false)
+    {
+        exit;
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -281,6 +307,91 @@ event_user(0)
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Update Missions Active
+    // GOAL.
+        if (mission[MISSION_GOAL])
+        {
+            // Check Save.
+                collectable_check("TOKEN", string(global.zone_name) + string(global.zone_act) + "_" + string(MISSION_GOAL))
+            
+            // Disable if collected.
+                if (collected = true)
+                {
+                    mission[MISSION_GOAL] = false;   
+                }
+        }
+    
+    // RINGS.
+        if (mission[MISSION_RINGS])
+        {
+            // Check Save.
+                collectable_check("TOKEN", string(global.zone_name) + string(global.zone_act) + "_" + string(MISSION_RINGS))
+            
+            // Disable if collected.
+                if (collected = true)
+                {
+                    mission[MISSION_RINGS] = false;   
+                }
+        }
+        
+    // TIME.
+        if (mission[MISSION_TIME])
+        {
+            // Check Save.
+                collectable_check("TOKEN", string(global.zone_name) + string(global.zone_act) + "_" + string(MISSION_TIME))
+            
+            // Disable if collected.
+                if (collected = true)
+                {
+                    mission[MISSION_TIME] = false;   
+                }
+        }
+        
+    // BADNIKS.
+        if (mission[MISSION_BADNIKS])
+        {
+            // Check Save.
+                collectable_check("TOKEN", string(global.zone_name) + string(global.zone_act) + "_" + string(MISSION_BADNIKS))
+            
+            // Disable if collected.
+                if (collected = true)
+                {
+                    mission[MISSION_BADNIKS] = false;   
+                }
+        }
+        
+    // FLICKIES.
+        if (mission[MISSION_FLICKIES])
+        {
+            // Check Save.
+                collectable_check("TOKEN", string(global.zone_name) + string(global.zone_act) + "_" + string(MISSION_FLICKIES))
+            
+            // Disable if collected.
+                if (collected = true)
+                {
+                    mission[MISSION_FLICKIES] = false;   
+                }
+        }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Update Mission Text
     // Default Mission Text.
         mission_total = "MISSIONS:#";
@@ -315,6 +426,34 @@ event_user(0)
             mission_total += "- Rescue " + string(mission_specific[MISSION_FLICKIES]) + " flickies. #";
         }
         
+    // All Missions Completed - Stop Missions
+        if (mission_total = "MISSIONS:#")
+        {
+            visible = false;
+            mission_total = "All missions completed."   
+        }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Initialize
+initialized = true;
 </string>
           </argument>
         </arguments>

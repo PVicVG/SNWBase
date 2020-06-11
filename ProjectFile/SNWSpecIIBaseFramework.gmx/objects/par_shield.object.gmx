@@ -8,6 +8,31 @@
   <parentName>obj_indestructible</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Shield Flags.
+shield_xoff = 0;
+shield_yoff = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
@@ -25,17 +50,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Visibility
+            <string>/// Handle Player
 if instance_exists(obj_player)
 {
-    if obj_player.sprite != spr_empty &amp;&amp; obj_player.invincibility != 2
-    {
-        visible = obj_player.visible;
-    }
-    else
-    {
-        visible = false;
-    }
+    // Visibility.
+        if (obj_player.sprite != spr_empty &amp;&amp; obj_player.invincibility != 2)
+        {
+            visible = obj_player.visible;
+        }
+        else
+        {
+            visible = false;
+        }
+    
+    // Size.
+        if (obj_player.player_index == CHAR_EGGROBO)
+        {
+            image_xscale = 1.5;
+            image_yscale = 1.5;
+            shield_yoff = -13;
+        }
 }
 
 </string>
