@@ -2,7 +2,7 @@
 <room>
   <caption></caption>
   <width>1480</width>
-  <height>570</height>
+  <height>670</height>
   <vsnap>16</vsnap>
   <hsnap>16</hsnap>
   <isometric>0</isometric>
@@ -12,7 +12,7 @@
   <showcolour>-1</showcolour>
   <code>/// Zone init. 
 
-    global.zone_name      = "GREEN HILL"
+    global.zone_name      = "LAYER TEST"
     global.zone_act       =  0;
     global.water_position = -1;
     global.death_height   = -1;
@@ -20,7 +20,7 @@
     // Trivia. (Optional. Set it to "" if it's not meant to be in your stage.)
 global.zone_trivia = "9:00PM - 5°C
 The beautiful Green Fields of the
-Green Hill Zone."</code>
+Layer Test Zone."</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -87,7 +87,30 @@ Green Hill Zone."</code>
     <instance objName="obj_layer_switch_0" x="800" y="480" name="inst_694F69DE" locked="0" code="" scaleX="4" scaleY="2.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_sign_post" x="1440" y="560" name="inst_93DFE160" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
-  <tiles/>
+  <tiles>
+    <tile bgName="tl_NTZ_tiles" x="0" y="480" w="128" h="128" xo="522" yo="522" id="10002208" name="inst_F6486218" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="128" y="480" w="128" h="128" xo="522" yo="522" id="10002209" name="inst_3F87E07B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="256" y="480" w="128" h="128" xo="522" yo="522" id="10002210" name="inst_3B199FFF" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="384" y="480" w="128" h="128" xo="522" yo="522" id="10002211" name="inst_2B8E1980" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="560" y="352" w="128" h="128" xo="522" yo="522" id="10002214" name="inst_A1F2B19A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="544" y="352" w="128" h="128" xo="522" yo="522" id="10002215" name="inst_E34FDB3F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="560" y="112" w="128" h="128" xo="652" yo="262" id="10002216" name="inst_ACCFF154" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="432" y="112" w="128" h="128" xo="522" yo="522" id="10002217" name="inst_2DFBCE81" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="416" y="112" w="128" h="128" xo="522" yo="522" id="10002218" name="inst_7F4DBB02" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="560" y="240" w="128" h="128" xo="522" yo="652" id="10002219" name="inst_EF6E70BF" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="688" y="352" w="128" h="128" xo="522" yo="522" id="10002220" name="inst_CE9D8F2B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="800" y="352" w="128" h="128" xo="522" yo="522" id="10002221" name="inst_1AE3D306" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="688" y="448" w="128" h="128" xo="262" yo="262" id="10002222" name="inst_F3C1627A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="752" y="560" w="128" h="128" xo="522" yo="522" id="10002223" name="inst_32CA37D0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="880" y="560" w="128" h="128" xo="522" yo="522" id="10002224" name="inst_52BF99F5" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="1008" y="560" w="128" h="128" xo="522" yo="522" id="10002225" name="inst_05C0BB8D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="1136" y="560" w="128" h="128" xo="522" yo="522" id="10002226" name="inst_AF61CC6D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="1264" y="560" w="128" h="128" xo="522" yo="522" id="10002227" name="inst_34695F3E" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="1392" y="560" w="128" h="128" xo="522" yo="522" id="10002228" name="inst_6BD8FD23" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="288" y="352" w="128" h="128" xo="522" yo="522" id="10002229" name="inst_6D1AC465" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="176" y="352" w="128" h="128" xo="522" yo="522" id="10002230" name="inst_A58E825F" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tl_NTZ_tiles" x="416" y="352" w="128" h="128" xo="392" yo="522" id="10002231" name="inst_6EBC7305" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+  </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>
   <PhysicsWorldLeft>0</PhysicsWorldLeft>

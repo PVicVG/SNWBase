@@ -741,6 +741,8 @@
           <sprite>sprites\spr_corkscrew_horizontal</sprite>
         </sprites>
         <sprites name="NPCs">
+          <sprite>sprites\spr_character_portraits</sprite>
+          <sprite>sprites\spr_NPC_normal</sprite>
           <sprite>sprites\spr_NPC_fchar</sprite>
           <sprite>sprites\spr_NPC_fur</sprite>
           <sprite>sprites\spr_NPC_shoe</sprite>
@@ -881,8 +883,10 @@
           <sprite>sprites\spr_ss_text</sprite>
         </sprites>
         <sprites name="Textbox">
-          <sprite>sprites\spr_character_portraits</sprite>
           <sprite>sprites\spr_textbox</sprite>
+          <sprite>sprites\spr_up_key</sprite>
+          <sprite>sprites\spr_importance_red</sprite>
+          <sprite>sprites\spr_importance_green</sprite>
           <sprite>sprites\spr_textbox_typing</sprite>
           <sprite>sprites\spr_textbox_finished</sprite>
           <sprite>sprites\spr_black_bars_faded</sprite>
@@ -901,10 +905,12 @@
         <sprites name="SaveScreen">
           <sprite>sprites\spr_savescreen_interface</sprite>
         </sprites>
+        <sprites name="Disclaimers">
+          <sprite>sprites\spr_disclaimer_palette</sprite>
+        </sprites>
         <sprite>sprites\spr_progress_bar</sprite>
         <sprite>sprites\spr_results_bonuses</sprite>
         <sprite>sprites\spr_ss_results_name</sprite>
-        <sprite>sprites\spr_up_key</sprite>
       </sprites>
       <sprites name="Sensors">
         <sprites name="Layer Switch">
@@ -2195,6 +2201,9 @@
             <object>objects\obj_data_display</object>
             <object>objects\obj_confirm_option_reset</object>
           </objects>
+          <objects name="Disclaimer">
+            <object>objects\obj_disclaimer_palette</object>
+          </objects>
         </objects>
         <objects name="Init">
           <object>objects\obj_init</object>
@@ -2294,6 +2303,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_init_quick</room>
+    <room>rooms\rm_palette_disclaimer</room>
     <room>rooms\rm_savescreen</room>
     <room>rooms\rm_options</room>
     <room>rooms\rm_skyvillage</room>

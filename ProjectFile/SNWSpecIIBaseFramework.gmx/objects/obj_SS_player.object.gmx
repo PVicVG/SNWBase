@@ -220,6 +220,11 @@ if (Rings &lt; 0)
     Rings = 0
 }
 
+if (Rings &gt; 50)
+{
+    Rings = 50;
+}
+
 
 </string>
           </argument>

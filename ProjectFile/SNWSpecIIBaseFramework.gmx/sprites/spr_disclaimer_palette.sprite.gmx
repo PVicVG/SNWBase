@@ -8,20 +8,21 @@
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
-  <bbox_right>52</bbox_right>
+  <bbox_right>479</bbox_right>
   <bbox_top>0</bbox_top>
-  <bbox_bottom>52</bbox_bottom>
+  <bbox_bottom>269</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>53</width>
-  <height>53</height>
+  <width>480</width>
+  <height>270</height>
   <frames>
-    <frame index="0">images\spr_character_portraits_0.png</frame>
-    <frame index="1">images\spr_character_portraits_1.png</frame>
-    <frame index="2">images\spr_character_portraits_2.png</frame>
+    <frame index="0">images\spr_disclaimer_palette_0.png</frame>
+    <frame index="1">images\spr_disclaimer_palette_1.png</frame>
+    <frame index="2">images\spr_disclaimer_palette_2.png</frame>
+    <frame index="3">images\spr_disclaimer_palette_3.png</frame>
   </frames>
 </sprite>

@@ -117,6 +117,7 @@
             <kind>1</kind>
             <string>/// XP Variables
 counting_xp = false;
+counting_xp_timer = -1;
 
 xp_show = global.xp;
 xp_sound_timer = -1;
@@ -266,6 +267,7 @@ TweenFireTo(id, EaseInOutQuad, 0, false, 220, 20, "total_x", 96)
             <string>/// Start Counting XP
     if !counting_xp
     {
+        counting_xp_timer = 220;
         counting_xp = true;
         global.xp += bonus_total/100;
     }
@@ -520,60 +522,72 @@ off += 1;
           <argument>
             <kind>1</kind>
             <string>/// Count XP
-if (counting_xp)
-{
-    if xp_sound_timer &gt; -1
-        xp_sound_timer --;
 
-    if (global.level == level_show){
-        if (global.xp &gt; xp_show)
+    // Count Down
+        if (counting_xp)
         {
-            xp_show += 1 * level_show;
-            
-            if xp_sound_timer == -1
+        
+        // Timer
+            if counting_xp_timer &gt; -1
             {
-                aud_play_simple(general_xp)
-                xp_sound_timer = 10;
+                counting_xp_timer -= 1;
             }
-        }
-    }
-    else if (global.level &gt; level_show){
-        if (xp_show &lt; level_show * 100)
-        {
-            xp_show += 1 * level_show;
+        
+        // XP Sound Timer
+            if xp_sound_timer &gt; -1
+                xp_sound_timer --;
+        
+            if (global.level == level_show){
+                if (global.xp &gt; xp_show)
+                {
+                    xp_show += 1 * level_show;
+                    
+                    if xp_sound_timer == -1
+                    {
+                        aud_play_simple(general_xp)
+                        xp_sound_timer = 10;
+                    }
+                }
+            }
+            else if (global.level &gt; level_show){
+                if (xp_show &lt; level_show * 100)
+                {
+                    xp_show += 1 * level_show;
+                    
+                    if xp_sound_timer == -1
+                    {
+                        aud_play_simple(general_xp)
+                        xp_sound_timer = 10;
+                    }
+                }
+                else
+                {
+                    level_show++;
+                    aud_play_simple(general_levelup)
+                    scr_display_message(0, "LEVEL UP!" + "#" + string(level_show - 1) + " &gt; " + string(level_show))
+                    xp_show = 0;
+                }
+            }
             
-            if xp_sound_timer == -1
+            // End Counting
+            if ((global.level == level_show &amp;&amp; floor(global.xp) == floor(xp_show)) or ((global.level == level_show &amp;&amp; floor(global.xp) == (floor(xp_show) * level_show))) or keyboard_check_pressed(global.key_enter) or counting_xp_timer = 0) &amp;&amp; alarm[7] == -1
             {
-                aud_play_simple(general_xp)
-                xp_sound_timer = 10;
+                if global.level != level_show
+                {
+                aud_play_simple(general_levelup)
+                }
+                
+                level_show = global.level;
+                xp_show = global.xp;
+                alarm[7] = 80;
+                counting_xp = false;
+                aud_play_simple(general_ring_monitor)
             }
-        }
-        else
-        {
-            level_show++;
-            aud_play_simple(general_levelup)
-            scr_display_message(0, "LEVEL UP!" + "#" + string(level_show - 1) + " &gt; " + string(level_show))
-            xp_show = 0;
-        }
-    }
-    
-    // End Counting
-    if ((global.level == level_show &amp;&amp; floor(global.xp) == floor(xp_show)) or ((global.level == level_show &amp;&amp; floor(global.xp) == (floor(xp_show) * level_show))) or keyboard_check_pressed(global.key_enter)) &amp;&amp; alarm[7] == -1
-    {
-        if global.level != level_show
-        {
-        aud_play_simple(general_levelup)
+            
+            // Exit
+            exit;
         }
         
-        level_show = global.level;
-        xp_show = global.xp;
-        alarm[7] = 80;
-        counting_xp = false;
-    }
-    
-    exit;
-}
-
 
 </string>
           </argument>

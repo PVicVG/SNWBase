@@ -13,7 +13,7 @@
   <code>/// Zone init. 
 
     global.zone_name      = "TEST AREA"
-    global.zone_act       =  1;
+    global.zone_act       =  2;
     global.water_position = -1;
     global.death_height   = -1;
     global.zone_id        =  1;</code>
